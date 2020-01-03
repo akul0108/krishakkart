@@ -1,3 +1,11 @@
-#bg{
-    background-color: rgba(0, 0, 0, 0.315);
-}
+.mt-6 {
+    margin-top: 8rem !important;
+  }
+
+.ml-6 {
+    margin-left: 14rem !important;
+  }
+
+.mb-6 {
+    margin-bottom: 4rem !important;
+  }
