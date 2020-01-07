@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { SellerRegistrationComponent } from './Seller/seller-registration/seller-registration.component';
 import { SellerHeaderComponent } from './Seller/seller-header/seller-header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TernsOfUseComponent } from './terns-of-use/terns-of-use.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SellerRegistrationComponent,
-    SellerHeaderComponent
+    SellerHeaderComponent,
+    TernsOfUseComponent
   ],
   imports: [
     BrowserModule,
