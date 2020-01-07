@@ -3,22 +3,34 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+//Material APIs
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+
+//Components
 import { SellerRegistrationComponent } from './Seller/seller-registration/seller-registration.component';
 import { SellerHeaderComponent } from './Seller/seller-header/seller-header.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TernsOfUseComponent } from './terns-of-use/terns-of-use.component';
+import { LoginComponent } from './Seller/login/login.component';
+import { TermsOfUseComponent } from './Seller/terms-of-use/terms-of-use.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SellerRegistrationComponent,
     SellerHeaderComponent,
-    TernsOfUseComponent
+    LoginComponent,
+    TermsOfUseComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+
+    //Material Components
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

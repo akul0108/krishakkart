@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TernsOfUseComponent } from './terns-of-use.component';
+import { TermsOfUseComponent } from './terms-of-use.component';
 
-describe('TernsOfUseComponent', () => {
-  let component: TernsOfUseComponent;
-  let fixture: ComponentFixture<TernsOfUseComponent>;
+describe('TermsOfUseComponent', () => {
+  let component: TermsOfUseComponent;
+  let fixture: ComponentFixture<TermsOfUseComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TernsOfUseComponent ]
+      declarations: [ TermsOfUseComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TernsOfUseComponent);
+    fixture = TestBed.createComponent(TermsOfUseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
