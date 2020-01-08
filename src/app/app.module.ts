@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //Material APIs
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 //Components
 import { SellerRegistrationComponent } from './Seller/seller-registration/seller-registration.component';
@@ -30,7 +32,9 @@ import { TermsOfUseComponent } from './Seller/terms-of-use/terms-of-use.componen
 
     //Material Components
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
