@@ -1,3 +1,15 @@
 .mb-6 {
     margin-bottom: 6.9rem !important;
   }
+
+.bg-image{
+  background: linear-gradient(
+    rgba(0,0,0,0.5),
+    rgba(0,0,0,0.5)
+  ),
+  url(src\assets\background_images\background_image1.jpg) no-repeat center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}

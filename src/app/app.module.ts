@@ -10,12 +10,13 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDialogModule} from '@angular/material/dialog';
 
 //Components
-import { SellerRegistrationComponent } from './Seller/seller-registration/seller-registration.component';
+import { SellerRegistrationComponent, TermsOfUseDialog} from './Seller/seller-registration/seller-registration.component';
 import { SellerHeaderComponent } from './Seller/seller-header/seller-header.component';
 import { LoginComponent } from './Seller/login/login.component';
-import { TermsOfUseComponent } from './Seller/terms-of-use/terms-of-use.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +24,10 @@ import { TermsOfUseComponent } from './Seller/terms-of-use/terms-of-use.componen
     SellerRegistrationComponent,
     SellerHeaderComponent,
     LoginComponent,
-    TermsOfUseComponent
+
+    //Dialogs
+    TermsOfUseDialog
+  
   ],
   imports: [
     BrowserModule,
@@ -34,8 +38,14 @@ import { TermsOfUseComponent } from './Seller/terms-of-use/terms-of-use.componen
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDialogModule
   ],
+
+  entryComponents:[
+    TermsOfUseDialog
+  ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })

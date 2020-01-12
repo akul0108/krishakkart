@@ -1,6 +1,6 @@
 <app-seller-header></app-seller-header>
 
-<div class="container-fluid" style="background-color: rgba(41, 41, 41, 0.856);">
+<div class="container-fluid bg-image">
   <div class="row row-content justify-content-center align-items-center">
     <div class="card col-md-4 offset-md-1 mt-5 mb-6">
       <div class="card-body">
@@ -24,13 +24,13 @@
           </div>
 
           <div class="form-group">
-            <small class="form-text text-muted">By filling this form, I agree to <a href=#>Terms of Use</a></small>
+            <small class="form-text text-muted">By filling this form, I agree to <span class="text-primary" (click)="openTermsofUse()">Terms of Use</span></small>
           </div>
 
           <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
 
           <div class="form-group">
-            <small class="form-text text-muted">Already a Seller? <a href=#>Login Here</a></small>
+            <small class="form-text text-muted">Already a Seller? <a href=# class="text-decoration-none">Login Here</a></small>
           </div>
         </form>
       </div>
