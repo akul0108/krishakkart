@@ -16,6 +16,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { SellerRegistrationComponent, TermsOfUseDialog} from './Seller/seller-registration/seller-registration.component';
 import { SellerHeaderComponent } from './Seller/seller-header/seller-header.component';
 import { LoginComponent } from './Seller/login/login.component';
+import { HomeHeaderComponent } from './Seller/headers/home-header/home-header.component';
 
 
 @NgModule({
@@ -26,7 +27,9 @@ import { LoginComponent } from './Seller/login/login.component';
     LoginComponent,
 
     //Dialogs
-    TermsOfUseDialog
+    TermsOfUseDialog,
+
+    HomeHeaderComponent
   
   ],
   imports: [
