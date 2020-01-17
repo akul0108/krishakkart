@@ -17,6 +17,10 @@ import { SellerRegistrationComponent, TermsOfUseDialog} from './Seller/seller-re
 import { SellerHeaderComponent } from './Seller/seller-header/seller-header.component';
 import { LoginComponent } from './Seller/login/login.component';
 import { HomeHeaderComponent } from './Seller/headers/home-header/home-header.component';
+import { SellerFooterComponent } from './Seller/seller-footer/seller-footer.component';
+import { SellerBannerComponent } from './Seller/seller-banner/seller-banner.component';
+import { SellerProductsComponent } from './Seller/seller-products/seller-products.component';
+import { KkTestimonialsComponent } from './Seller/kk-testimonials/kk-testimonials.component';
 
 
 @NgModule({
@@ -29,7 +33,15 @@ import { HomeHeaderComponent } from './Seller/headers/home-header/home-header.co
     //Dialogs
     TermsOfUseDialog,
 
-    HomeHeaderComponent
+    HomeHeaderComponent,
+
+    SellerFooterComponent,
+
+    SellerBannerComponent,
+
+    SellerProductsComponent,
+
+    KkTestimonialsComponent
   
   ],
   imports: [
