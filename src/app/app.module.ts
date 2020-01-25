@@ -21,6 +21,8 @@ import { SellerFooterComponent } from './Seller/seller-footer/seller-footer.comp
 import { SellerBannerComponent } from './Seller/seller-banner/seller-banner.component';
 import { SellerProductsComponent } from './Seller/seller-products/seller-products.component';
 import { KkTestimonialsComponent } from './Seller/kk-testimonials/kk-testimonials.component';
+import { KkPageNotFoundComponent } from './kk-page-not-found/kk-page-not-found.component';
+
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { KkTestimonialsComponent } from './Seller/kk-testimonials/kk-testimonial
 
     SellerProductsComponent,
 
-    KkTestimonialsComponent
+    KkTestimonialsComponent,
+
+    KkPageNotFoundComponent
   
   ],
   imports: [
