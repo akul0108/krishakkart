@@ -1,0 +1,32 @@
+.bg-color {
+  /* background-image: linear-gradient(to right, #bdbbbe, #50758e);
+   */
+  background-color: rgba(0, 0, 0, 0.3);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  height: 101%;
+}
+
+.bg-img {
+    height: 0;
+}
+
+.mat-card {
+  height: 300px;
+  border-radius: 30px;
+  width: 400px;
+  margin-left: 59%;
+  /* background-color: rgba(0, 0, 0, 0.3); */
+}
+
+.mat-form-field {
+    width: 100%;
+    margin-bottom: -5px;
+}
+
+.mat-card-actions {
+    margin-top: -22px;
+}
