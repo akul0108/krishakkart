@@ -25,6 +25,7 @@ import { KkPageNotFoundComponent } from './kk-page-not-found/kk-page-not-found.c
 import { SellerAboutComponent } from './Seller/seller-about/seller-about.component';
 import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { KkRecognizeComponent } from './Seller/kk-recognize/kk-recognize.component';
 
 
 
@@ -48,7 +49,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     KkPageNotFoundComponent,
     SellerAboutComponent,
     AdminLoginComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    KkRecognizeComponent
   
   ],
   imports: [

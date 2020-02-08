@@ -1,3 +1,19 @@
+.main_header {
+  background: none;
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+}
+
+ .navbar-brand {
+  background-color: white;
+  padding: auto;
+  position: absolute;
+  /* margin-top: 0px; */
+   top: 0px; 
+  /* margin-left: 0px; */
+  /* left: 0px; */
+ }  
 .image:after {
     content:'\A';
     position:absolute;
