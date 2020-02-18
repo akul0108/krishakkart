@@ -1,0 +1,9 @@
+video {
+    border-radius: 20px;
+}
+
+.sticky {
+    position: sticky;
+    top: 80px;
+    z-index: 1019;
+}

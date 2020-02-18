@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/util';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-us',
@@ -7,6 +8,8 @@ import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/u
   styleUrls: ['./contact-us.component.css']
 })
 export class ContactUsComponent implements OnInit, AfterViewInit {
+
+  message_send : FormGroup;
 
   @ViewChild('mapContainer', {static : false}) gmap : ElementRef;
   map : google.maps.Map;
@@ -34,11 +37,15 @@ export class ContactUsComponent implements OnInit, AfterViewInit {
     this.mapInitializer();
   }
 
-  constructor() { }
+  constructor(private _formBuilder : FormBuilder) { }
 
   ngOnInit() {
+    this.message_send = this._formBuilder.group({
+      name: ['',[Validators.required, Validators.pattern('[a-zA-Z]'),Validators.maxLength(30)]],
+      email: ['',[Validators.required, Validators.email]],
+      contact: ['',[Validators.required]]
+    })
   }
-
   
 
 }

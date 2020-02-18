@@ -16,3 +16,9 @@
   background-color: #009f4d;
   color: white;
 }
+
+.sticky {
+  position: sticky;
+  top: 80px;
+  z-index: 1019;
+}

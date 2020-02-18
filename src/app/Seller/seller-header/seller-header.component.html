@@ -1,24 +1,114 @@
-<header>
-<div class="container-fluid">
-    <div class="row bg-white">
+<div>
+  <header>
+    <div class="container-fluid">
+      <div class="row">
         <div class="col-xl-6 col-lg-6 col-sm-12 col-xs-12">
-            <div class="text-center my-2">
-                <button mat-button class="text-dark text-decoration-none">Contact Us : +91-8505937520</button>
-            </div>
+          <div class="text-center my-2">
+            <button mat-button class="text-white text-decoration-none">Contact Us : +91-8505937520</button>
+          </div>
         </div>
         <div class="col-xl-6 col-lg-6 col-sm-12 col-xs-12 my-1">
-            <div class="text-center">
-                <a class="mr-4"><img src="assets\logo\Google_play_store.png" width="120px;" height="auto"></a>  
-                <a href="https://www.facebook.com/Krishakkart-103547904365081/" class="mx-2"><i class="fa fa-facebook-f" style="color: rgb(66, 103, 178);"></i></a>
-                <a href="https://www.linkedin.com/pulse/agriculture-machinery-rental-basis-krishakkart-an-effort-pandey/" class="mx-2"><i class="fa fa-linkedin text-primary"></i></a>
-                <a href="" class="mx-2"><i class="fa fa-google-plus text-danger"></i></a>
-                <a href="" class="mx-2"><i class="fa fa-twitter text-info"></i></a>
-            </div>       
+          <div class="text-center">
+            <a class="mr-4"><img src="assets\logo\Google_play_store.png" width="120px;" height="auto"></a>
+            <a href="https://www.facebook.com/Krishakkart-103547904365081/" class="mx-2"><i
+                class="fa fa-facebook-f text-white"></i></a>
+            <a href="https://www.linkedin.com/pulse/agriculture-machinery-rental-basis-krishakkart-an-effort-pandey/"
+              class="mx-2"><i class="fa fa-linkedin text-white"></i></a>
+            <a href="" class="mx-2"><i class="fa fa-google-plus text-white"></i></a>
+            <a href="" class="mx-2"><i class="fa fa-twitter text-white"></i></a>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</header>
-<!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark d-md-block d-none">
+  </header>
+
+  <div class="container-fluid sticky-top bg-white second_header">
+    <nav class="container navbar navbar-light navbar-expand-sm">
+
+      <img src="assets\logo\kkheaderlogo.png" class="navbar-brand" height="80px" />
+      <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- <a class="navbar-brand" href="#">Krishakkart</a> -->
+      <!-- <div class="col-md-5">
+        <ul class="nav navbar-nav navbar-collapse collapse" id="navbarText1">
+          <li class="nav-item mr-4">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item mx-4">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item mx-4">
+            <a class="nav-link" href="#">Products</a>
+          </li>
+        </ul>
+      </div>
+    
+      <div class="col-md-2">
+        <img src="assets\logo\kkheaderlogo.png" class="navbar-brand" height="100px" />
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarText"
+          aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      
+      <div class="col-md-5">
+        <ul class="nav navbar-nav navbar-collapse collapse ml-auto" id="navbarText2">
+          <li class="nav-item mx-4">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item mx-4">
+            <a class="nav-link" href="#">Blog</a>
+          </li>
+          <li class="nav-item ml-4">
+            <a class="nav-link" href="#">Contact Us</a>
+          </li>
+        </ul>
+      </div> -->
+
+
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav ml-auto">
+          <li>
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#">Products</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#">Blog</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#">Contact Us</a>
+          </li>
+        </ul>
+
+        <!-- <ul class="navbar-nav" *ngIf="false">
+      <li>
+        <a class="nav-link" href="#">Login</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#">Signup</a>
+      </li>
+    </ul> -->
+      </div>
+
+      <!-- <div>
+    <i class="material-icons">
+      add_shopping_cart
+    </i>
+  </div> -->
+    </nav>
+  </div>
+  <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark d-md-block d-none">
     <div class="container-fluid justify-content-center">
         <a href="#">
             <img src="assets\logo\kkheaderlogo.png" height="50">
@@ -27,8 +117,8 @@
     </div>
 </nav> -->
 
-<!--Below Medium Screen-->
-<!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark d-block d-md-none">
+  <!--Below Medium Screen-->
+  <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark d-block d-md-none">
     <div class="container-fluid justify-content-center">
         <a href="#" class="text-white text-decoration-none">
             <img src="assets\logo\kkheaderlogo.png" height="32">
@@ -36,3 +126,12 @@
         </a>
     </div>
 </nav> -->
+
+  <app-seller-banner></app-seller-banner>
+  <app-seller-about></app-seller-about>
+  <app-seller-products></app-seller-products>
+  <app-kk-testimonials></app-kk-testimonials>
+  <app-kk-recognize></app-kk-recognize>
+  <app-contact-us></app-contact-us>
+  <app-seller-footer></app-seller-footer>
+</div>

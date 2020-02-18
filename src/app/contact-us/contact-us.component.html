@@ -1,7 +1,11 @@
-<section>
-  <div class="container">
-    <h3 class="text-center">Contact Us</h3>
-
+<section class="container-fluid">
+  
+    <!-- <h3 class="text-center">Contact Us</h3> -->
+    <div class="sticky bg-white text-center">
+      <h3 class="font-weight-bold black-text pb-2">Contact Us</h3>
+      <hr>
+    </div>
+    <div class="container">
     <div class="row pt-5">
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="row">
@@ -47,19 +51,23 @@
       </div>
     </div>
 
+    <form [formGroup]="message_send">
     <div class="row">
       <div class="col-md-6">
         <mat-form-field class="w-100">
           <mat-label>Name</mat-label>
-          <input matInput placeholder="Eg. Ram Kumar">
+          <input matInput placeholder="Eg. Ram Kumar" formControlName="name" #name>
+          <mat-error *ngIf="message_send?.controls?.name?.hasError('required')"> Name is <strong>required.</strong></mat-error>
+          <!-- <mat-error *ngIf="message_send?.controls?.name?.hasError('pattern')"> Please enter only <strong>Characters.</strong></mat-error> -->
         </mat-form-field>
         <mat-form-field class="w-100">
           <mat-label>Email</mat-label>
-          <input matInput placeholder="Eg. example@email.com">
+          <input matInput placeholder="Eg. example@email.com" formControlName="email" #email>
+          
         </mat-form-field>
         <mat-form-field class="w-100">
           <mat-label>Mobile Number</mat-label>
-          <input matInput placeholder="Eg. 8123185479">
+          <input matInput placeholder="Eg. 8123185479" formControlName="contact" #contact>
         </mat-form-field>
       </div>
       <div class="col-md-6">
@@ -72,6 +80,7 @@
         <button mat-raised-button class="w-100 mt-2" color="success"><i class="fa fa-paper-plane mr-2"></i>Send</button>
       </div>
     </div>
+  </form>
   </div>
 </section>
 
