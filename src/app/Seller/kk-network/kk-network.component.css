@@ -1,0 +1,19 @@
+.sticky {
+    position: sticky;
+    top: 80px;
+    z-index: 1019;
+}
+
+.counter {
+    animation-duration: 5s;
+    animation-delay: 2s;
+}
+
+.bgimg {
+    background: url('../../../assets/background_images/network.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #f5f2d0;
+    height: 508px;
+    margin-top: -48px;
+}

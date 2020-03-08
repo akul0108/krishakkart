@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxPageScrollModule } from 'ngx-page-scroll';
+import { HttpClientModule } from '@angular/common/http';
 
 //Material APIs
 import {MatCardModule} from '@angular/material/card';
@@ -24,8 +26,10 @@ import { KkTestimonialsComponent } from './Seller/kk-testimonials/kk-testimonial
 import { KkPageNotFoundComponent } from './kk-page-not-found/kk-page-not-found.component';
 import { SellerAboutComponent } from './Seller/seller-about/seller-about.component';
 import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
+import { ContactUsComponent } from './Seller/contact-us/contact-us.component';
 import { KkRecognizeComponent } from './Seller/kk-recognize/kk-recognize.component';
+import { KkServicesComponent } from './Seller/kk-services/kk-services.component';
+import { KkNetworkComponent } from './Seller/kk-network/kk-network.component';
 
 
 
@@ -50,7 +54,9 @@ import { KkRecognizeComponent } from './Seller/kk-recognize/kk-recognize.compone
     SellerAboutComponent,
     AdminLoginComponent,
     ContactUsComponent,
-    KkRecognizeComponent
+    KkRecognizeComponent,
+    KkServicesComponent,
+    KkNetworkComponent
   
   ],
   imports: [
@@ -59,7 +65,9 @@ import { KkRecognizeComponent } from './Seller/kk-recognize/kk-recognize.compone
     BrowserAnimationsModule,
     FormsModule, 
     ReactiveFormsModule,
-
+    NgxPageScrollModule,
+    HttpClientModule,
+    
     //Material Components
     MatCardModule,
     MatButtonModule,
