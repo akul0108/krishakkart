@@ -20,7 +20,7 @@ import { SellerRegistrationComponent, TermsOfUseDialog} from './Seller/seller-re
 import { SellerHeaderComponent } from './Seller/seller-header/seller-header.component';
 import { LoginComponent } from './Seller/login/login.component';
 import { SellerFooterComponent } from './Seller/seller-footer/seller-footer.component';
-import { SellerBannerComponent, BuyerLoginDialog, BuyerRegDialog } from './Seller/seller-banner/seller-banner.component';
+import { SellerBannerComponent, /*BuyerLoginDialog, BuyerRegDialog */ } from './Seller/seller-banner/seller-banner.component';
 import { SellerProductsComponent } from './Seller/seller-products/seller-products.component';
 import { KkTestimonialsComponent } from './Seller/kk-testimonials/kk-testimonials.component';
 import { KkPageNotFoundComponent } from './kk-page-not-found/kk-page-not-found.component';
@@ -42,8 +42,8 @@ import { KkNetworkComponent } from './Seller/kk-network/kk-network.component';
 
     //Dialogs
     TermsOfUseDialog,
-    BuyerLoginDialog,
-    BuyerRegDialog,
+    // BuyerLoginDialog,
+    // BuyerRegDialog,
 
     //Components
     SellerFooterComponent,
@@ -81,8 +81,8 @@ import { KkNetworkComponent } from './Seller/kk-network/kk-network.component';
     
     //Dialogs
     TermsOfUseDialog,
-    BuyerLoginDialog,
-    BuyerRegDialog
+    // BuyerLoginDialog,
+    // BuyerRegDialog
   ],
   
   providers: [],
