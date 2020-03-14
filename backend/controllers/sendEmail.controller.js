@@ -8,6 +8,7 @@ module.exports.sendEmail = (req, res, next) => {
     host: 'smtp.gmail.com',
     port: 465,
     secure: true,
+    // service: 'gmail',
     auth: {
       user: 'infokrishakkart@gmail.com',
       pass: 'Aa@123456'
@@ -15,7 +16,7 @@ module.exports.sendEmail = (req, res, next) => {
   });
 
   let mailOptions = {
-    from: req.body.email, // sender address
+    from: 'infokrishakkart@gmail.com', // sender address
     to: 'infokrishakkart@gmail.com', // list of receivers
     subject: 'Need an assistance', // Subject line
     // text: 'Test', // plain text body
@@ -24,9 +25,9 @@ module.exports.sendEmail = (req, res, next) => {
 
   transporter.sendMail(mailOptions, function (error, response) { //callback
     if (error) {
-      console.log(error);
+      console.log(error.message);
     } else {
-      console.log(res);
+      console.log('message sent : ',  res);
     }
   });
 }

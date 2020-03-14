@@ -17,6 +17,11 @@ export class WebServiceService {
       contact : contact,
       msg : msg
     };
-    return this.http.post(`${this.uri}/sendEmail`, user).subscribe((res) => console.log(res));
+    return this.http.post(`${this.uri}/sendEmail`, user).subscribe((res) => {
+      if(!res)
+      console.log("Message not delivered");
+      else
+      console.log("Message Delivered");
+    });
   }
 }
