@@ -8,7 +8,7 @@ export class WebServiceService {
 
   constructor(private http : HttpClient) { }
 
-  uri = 'http://13.126.214.205/v1';
+  uri = 'http://13.234.74.39:3000/v1';
 
   sendmsg(name, email, contact, msg) {
     const user = {
