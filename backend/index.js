@@ -12,7 +12,7 @@ var app = express();
 
 //Middleware
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({credentials: true, origin: true}));
 app.use('/v1',rtsIndex);
 
 //Start Server
