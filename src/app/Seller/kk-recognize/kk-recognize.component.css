@@ -3,3 +3,7 @@
     top: 80px;
     z-index: 1019;
 }
+
+.overflow {
+    overflow-x: hidden;
+}

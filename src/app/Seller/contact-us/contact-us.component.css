@@ -21,6 +21,7 @@
   position: sticky;
   top: 80px;
   z-index: 1019;
+  overflow-x: hidden;
 }
 
 .mapouter {
