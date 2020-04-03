@@ -37,3 +37,11 @@
   height: 447px;
   /* width: 100%; */
 }
+
+.overflow {
+  overflow-x: hidden;
+}
+
+.form-overflow {
+  overflow: hidden;
+}
