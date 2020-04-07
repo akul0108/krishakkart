@@ -30,6 +30,8 @@ import { ContactUsComponent } from './Seller/contact-us/contact-us.component';
 import { KkRecognizeComponent } from './Seller/kk-recognize/kk-recognize.component';
 import { KkServicesComponent } from './Seller/kk-services/kk-services.component';
 import { KkNetworkComponent } from './Seller/kk-network/kk-network.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 
@@ -75,6 +77,7 @@ import { KkNetworkComponent } from './Seller/kk-network/kk-network.component';
     MatFormFieldModule,
     MatDialogModule,
     MatInputModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
 
   entryComponents:[

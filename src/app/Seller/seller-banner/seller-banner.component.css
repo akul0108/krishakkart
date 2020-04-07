@@ -1,40 +1,7 @@
-/* .main_header {
-  background: none;
-  position: absolute;
-  z-index: 100;
-  width: 100%;
-} */
-
  .navbar-brand {
-  /* background-color: white; */
-
   padding: auto;
-  /* margin-top: -70px; */
   top: 0px; 
-  /*margin-left: 0px; 
-  left: 0px; */
  }  
-
- /* .navbar-left {
-   width: 100%;
-   float: left !important;
- } */
-
- /* .navbar-nav > li > a {
-   color: white;
-   border: 1px solid transparent;
-   padding: 10px;
-   -moz-box-sizing: border-box;
-   box-sizing: border-box;
-   text-transform: uppercase;
- }
-
- .navbar-nav > li :hover{
-   background: rgba(0,0,0,0.3);
-   color: white;
-   border: 1px solid #eff2f2;
-   border-radius: 7%;
- } */
  
 .image:after {
     content:'\A';

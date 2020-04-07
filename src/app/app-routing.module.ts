@@ -15,7 +15,6 @@ const routes: Routes = [
   {path:'', component: SellerHeaderComponent},
   {path:'sellerReg', component:SellerRegistrationComponent},
   {path:'sellerLogin', component: LoginComponent},
-  {path: 'contactus', component: ContactUsComponent},
   
   //Buyer / Service Consumer
 
