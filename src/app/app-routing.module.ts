@@ -2,27 +2,29 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { KkPageNotFoundComponent } from './kk-page-not-found/kk-page-not-found.component';
 import { SellerRegistrationComponent } from './Seller/seller-registration/seller-registration.component';
-import { LoginComponent } from './Seller/login/login.component';
-import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
-import { ContactUsComponent } from './Seller/contact-us/contact-us.component';
+import { LoginComponent } from './login/login.component';
 import { SellerHeaderComponent } from './Seller/seller-header/seller-header.component';
 
 
 const routes: Routes = [
   
+  //Other
+  {path:'', component: SellerHeaderComponent},
+  {path:'login', component: LoginComponent},
+
   //Seller / Service Provider
   // {path:'', redirectTo:'', pathMatch:'full'},
-  {path:'', component: SellerHeaderComponent},
+  
   {path:'sellerReg', component:SellerRegistrationComponent},
-  {path:'sellerLogin', component: LoginComponent},
+  
   
   //Buyer / Service Consumer
 
   //Admin
-  {path:'adminLogin', component:AdminLoginComponent},
   
-  //Other
-  {path:'**', component:KkPageNotFoundComponent}
+
+  // 404
+  {path:'**', component:KkPageNotFoundComponent},
 ];
 
 @NgModule({

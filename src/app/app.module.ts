@@ -14,18 +14,18 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 //Components
 import { SellerRegistrationComponent, TermsOfUseDialog} from './Seller/seller-registration/seller-registration.component';
 import { SellerHeaderComponent } from './Seller/seller-header/seller-header.component';
-import { LoginComponent } from './Seller/login/login.component';
+import { LoginComponent } from './login/login.component';
 import { SellerFooterComponent } from './Seller/seller-footer/seller-footer.component';
 import { SellerBannerComponent, /*BuyerLoginDialog, BuyerRegDialog */ } from './Seller/seller-banner/seller-banner.component';
 import { SellerProductsComponent } from './Seller/seller-products/seller-products.component';
 import { KkTestimonialsComponent } from './Seller/kk-testimonials/kk-testimonials.component';
 import { KkPageNotFoundComponent } from './kk-page-not-found/kk-page-not-found.component';
 import { SellerAboutComponent } from './Seller/seller-about/seller-about.component';
-import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
 import { ContactUsComponent } from './Seller/contact-us/contact-us.component';
 import { KkRecognizeComponent } from './Seller/kk-recognize/kk-recognize.component';
 import { KkServicesComponent } from './Seller/kk-services/kk-services.component';
@@ -54,7 +54,6 @@ import { environment } from '../environments/environment';
     KkTestimonialsComponent,
     KkPageNotFoundComponent,
     SellerAboutComponent,
-    AdminLoginComponent,
     ContactUsComponent,
     KkRecognizeComponent,
     KkServicesComponent,
@@ -77,6 +76,7 @@ import { environment } from '../environments/environment';
     MatFormFieldModule,
     MatDialogModule,
     MatInputModule,
+    MatSnackBarModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
 

@@ -1,0 +1,68 @@
+.bg-color {
+  background: url(src\assets\background_images\admin_login_bgimg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  overflow-y: hidden;
+}
+  
+.text-darkslateblue {
+  color: darkslateblue;
+}
+
+.primary {
+  color: darkslateblue;
+}
+
+.mat-form-field {
+  width: 100%;
+  margin-bottom: -5px;
+}
+
+.mat-card-actions {
+  margin-top: -22px;
+} 
+
+  /* ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline{
+    color: black !important;
+}
+
+::ng-deep .mat-input-element {
+    caret-color: black !important;
+}
+
+::ng-deep .mat-form-field-label {
+    color: black !important;
+} */
+
+/*Media Query for Laptop and Above*/
+
+@media (min-width: 992px) {
+  .mat-card {
+    border-radius: 30px;
+    width: 400px;
+    margin-left: 59%;
+  }
+}
+
+/* Media Query for Tablets and less */
+
+@media (max-width: 991.98px) {
+  .mat-card {
+    border-radius: 30px;
+    width: 400px;
+    margin-left: 25%;
+  }
+}
+
+/*Media Query for Phones/ Mobiles and less*/
+
+@media (max-width: 767.98px) {
+  .mat-card {
+    border-radius: 30px;
+    width: 100%;
+    margin-left: 0;
+  }
+}
