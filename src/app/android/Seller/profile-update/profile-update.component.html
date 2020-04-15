@@ -1,0 +1,33 @@
+<form [formGroup]="message_send">
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field class="w-100">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Eg. Ram Kumar" formControlName="name" #name>
+        <mat-error *ngIf="message_send?.controls?.name?.hasError('required')"> Name is <strong>required.</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" inputmode="email" placeholder="Eg. example@email.com" formControlName="email"
+          #email>
+
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>Mobile Number</mat-label>
+        <input matInput type="text" inputmode="numeric" placeholder="Eg. 8123185479" formControlName="contact" #contact>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field class="w-100">
+        <mat-label>Leave a message</mat-label>
+        <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows='5' cdkAutosizeMaxRows='5' formControlName="msg"
+          placeholder="Need Service / Product" #msg></textarea>
+      </mat-form-field>
+
+      <button mat-raised-button class="w-100 mt-2" color="success"
+        (click)="send(name.value, email.value, contact.value, msg.value)"><i
+          class="fa fa-paper-plane mr-2"></i>Send</button>
+    </div>
+  </div>
+</form>

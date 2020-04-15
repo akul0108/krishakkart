@@ -1,0 +1,31 @@
+<mat-sidenav-container class="mat-container" autosize>
+    <mat-sidenav #sidenav [mode]="isLargeScreen() ? 'side' : 'over'" [opened]="isLargeScreen()">
+      <div class="logo">
+        <img src="../../../assets/logo/kkheaderlogo.png" alt="logo" width="60%" />
+      </div>
+      <mat-nav-list>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngFor="let menuItem of menuItems">
+          <mat-icon mat-list-icon>{{menuItem.icon}}</mat-icon>
+          <a matLine (click)="assignComponent([menuItem.path], [menuItem.title])" (click)="sidenav.toggle()">{{menuItem.title}}</a>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="sidenav-content">
+      <div class="container-fluid">
+        <div class="row">
+          <mat-toolbar color="seagreen">
+            <button mat-button color="seagreen" (click)="sidenav.toggle()">
+              <mat-icon>menu</mat-icon>
+            </button>
+            <h1 class="pl-2">{{componentName}}</h1>
+            <span class="spacer"></span>
+            <mat-icon>account_circle</mat-icon>
+          </mat-toolbar>
+        </div>
+        <div class="row">
+          <ng-container *ngComponentOutlet="allocComponent"></ng-container>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
