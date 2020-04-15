@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ROUTES } from './sidebar-routes.config';
 import { HomeComponent } from '../home/home.component';
 import { ProfileUpdateComponent } from '../profile-update/profile-update.component';
+import { ContactComponent } from '../contact/contact.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,6 +28,11 @@ export class DashboardComponent implements OnInit {
         this.componentName = componentTitle[0];
         this.allocComponent = ProfileUpdateComponent;
         break;
+
+      case 'contact':
+        this.componentName = componentTitle[0];
+        this.allocComponent = ContactComponent;
+        break;
     
       default: 
         this.componentName = componentTitle[0];
@@ -40,7 +46,7 @@ export class DashboardComponent implements OnInit {
 
   isLargeScreen() {
     const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    if (width > 720) {
+    if (width > 768) {
         return true;
     } else {
         return false;
