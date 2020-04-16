@@ -39,9 +39,6 @@ export class DashboardComponent implements OnInit {
         this.allocComponent = HomeComponent;
         break;
     }
-  //   if (component[0] === "profile") this.dummyComponent = ProfileUpdateComponent;
-  //   else if (component[0] === "faqs") this.dummyComponent = FAQsComponent;
-  //   // else this.dummyComponent = SellerDashboardComponent;
  }
 
   isLargeScreen() {
@@ -52,5 +49,4 @@ export class DashboardComponent implements OnInit {
         return false;
     }
   }
-
 }

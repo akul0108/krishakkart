@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 
 @Component({
   selector: 'app-profile-update',
@@ -10,7 +11,7 @@ export class ProfileUpdateComponent implements OnInit {
 
   message_send : FormGroup;
   
-  constructor(private _formBuilder : FormBuilder) { }
+  constructor(private _formBuilder : FormBuilder, private _bottomSheet: MatBottomSheet) { }
 
   ngOnInit(): void {
     this.message_send = this._formBuilder.group({
@@ -21,4 +22,20 @@ export class ProfileUpdateComponent implements OnInit {
     })
   }
 
+  openBottomSheet(): void {
+    this._bottomSheet.open(BottomSheet);
+  }
+}
+
+@Component({
+  selector: 'bottom-sheet',
+  templateUrl: 'bottom-sheet.html',
+})
+export class BottomSheet {
+  constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheet>) {}
+
+  openLink(event: MouseEvent): void {
+    this._bottomSheetRef.dismiss();
+    event.preventDefault();
+  }
 }
