@@ -1,24 +1,28 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { KkPageNotFoundComponent } from './kk-page-not-found/kk-page-not-found.component';
-import { SellerRegistrationComponent } from './Seller/seller-registration/seller-registration.component';
+import { KkPageNotFoundComponent } from './website/kk-page-not-found/kk-page-not-found.component';
+import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
-import { SellerHeaderComponent } from './Seller/seller-header/seller-header.component';
+import { KkHeaderComponent } from './website/kk-header/kk-header.component';
+import { DashboardComponent } from './android/Seller/dashboard/dashboard.component';
+import { ProfileUpdateComponent } from './android/Seller/profile-update/profile-update.component';
 
 
 const routes: Routes = [
   
   //Other
-  {path:'', component: SellerHeaderComponent},
-  {path:'login', component: LoginComponent},
+  { path:'', component: KkHeaderComponent },
+  { path:'login', component: LoginComponent },
 
   //Seller / Service Provider
   // {path:'', redirectTo:'', pathMatch:'full'},
   
-  {path:'sellerReg', component:SellerRegistrationComponent},
+  { path:'Reg', component:RegistrationComponent },
   
   
   //Buyer / Service Consumer
+  { path:'sellerDashboard', component: DashboardComponent },
+  { path:'sellerUpdateProfile', component: ProfileUpdateComponent },
 
   //Admin
   

@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "krishakkart"
+  "defaultProject": "krishakkart",
+  "cli": {
+    "analytics": false
+  }
 }
