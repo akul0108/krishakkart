@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { KkHeaderComponent } from './website/kk-header/kk-header.component';
 import { DashboardComponent } from './android/Seller/dashboard/dashboard.component';
 import { ProfileUpdateComponent } from './android/Seller/profile-update/profile-update.component';
+import { CustDashboardComponent } from './android/Customer/cust-dashboard/cust-dashboard.component';
 
 
 const routes: Routes = [
@@ -13,14 +14,13 @@ const routes: Routes = [
   //Other
   { path:'', component: KkHeaderComponent },
   { path:'login', component: LoginComponent },
-
-  //Seller / Service Provider
   // {path:'', redirectTo:'', pathMatch:'full'},
-  
   { path:'Reg', component:RegistrationComponent },
   
-  
   //Buyer / Service Consumer
+  { path:'custDashboard', component: CustDashboardComponent},
+
+  //Seller / Service Provider
   { path:'sellerDashboard', component: DashboardComponent },
   { path:'sellerUpdateProfile', component: ProfileUpdateComponent },
 

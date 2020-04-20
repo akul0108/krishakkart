@@ -23,9 +23,15 @@
 
 .mat-card-actions {
   margin-top: -22px;
-} 
+}
 
-  /* ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline{
+.fa {
+  margin-top: -4px;
+  padding-right: 10px;
+  font-size: 20px;
+}
+
+/* ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline{
     color: black !important;
 }
 

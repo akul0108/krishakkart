@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import * as firebase from 'firebase';
-import { WebServiceService } from '../website/web-service.service';
-import { environment } from 'src/environments/environment';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -13,69 +14,135 @@ export class LoginComponent implements OnInit {
 
   public recaptchaVerifier: firebase.auth.RecaptchaVerifier;
 
-  // windowRef: any;
+  custLoginFormGroup: FormGroup;
+  OTPFormGroup: FormGroup;
+  sellerLoginFormGroup: FormGroup;
+  confirmCode : boolean = false;
+  UserInput : boolean = true;
+  confirmationResult : any;
 
-  // phoneNumber = new PhoneNumber()
-
-  // verificationCode: string;
-
-  // user: any;
-
-  
-  constructor( private win: WebServiceService) { 
-    // firebase.initializeApp(environment.firebaseConfig);
+  constructor( private auth: AuthService, private router: Router, private snackbar: MatSnackBar, private _formBuilder: FormBuilder) { 
   }
 
   ngOnInit() {
-    // this.windowRef = this.win.windowRef
-    // this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container')
+    this.custLoginFormGroup = this._formBuilder.group({
+      mobile: ['',[Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('[6-9][0-9]*')]],
+    })
+    
+    this.OTPFormGroup = this._formBuilder.group({
+      otp: ['',[Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
+    })   
 
-    // this.windowRef.recaptchaVerifier.render()
+    this.sellerLoginFormGroup = this._formBuilder.group({
+      username: ['',Validators.required],
+      password: ['', Validators.required]
+    })
+  }
 
+  ngAfterViewInit() {
     this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
     this.recaptchaVerifier.render();
   }
 
+  // Sign-in with Phone
   sendLoginCode() {
 
     const appVerifier = this.recaptchaVerifier;
 
-    const num = '+918881616009';
+    const num = this.custLoginFormGroup.value;
 
-    firebase.auth().signInWithPhoneNumber(num, appVerifier)
-            .then(confirmationResult => {
-              // this.sent = true;
-              const verification = prompt('Enter verification code');
-              if (verification != null) {
-                console.log(verification);
-                confirmationResult.confirm(verification)
-                  .then((good) => {
-                    // all checks out
-                    console.log('success');
-                  })
-                  .catch((bad) => {
-                    // code verification was bad.
-                    console.log('Bad Code');
-                  });
-              } else {
-                console.log('No verification code entered');
-              }
+    firebase.auth().signInWithPhoneNumber(`+91${num.mobile}`, appVerifier)
+            .then(result => {
+              this.confirmCode = true;
+              this.UserInput = false;
+              this.confirmationResult = result;
             })
             .catch( error => { 
-              console.log('sms not sent', error);
+              this.snackbar.open(`sms not sent: ${error.message}`, 'X',{
+                duration: 6000,
+                verticalPosition: 'top'
+              });
             });
-
   }
 
-}
+  loginViaOTP() {
+    if(this.confirmationResult != null) {
+      let otp = this.OTPFormGroup.get('otp').value
+      if(otp != null) {
+        console.log(otp);
+        this.confirmationResult.confirm(otp)
+          .then((good) => {
+                // all checks out
+              this.confirmationResult = '';
+              this.router.navigateByUrl('custDashboard');
+            })
+            .catch((bad) => {
+              // code verification was bad.
+              console.log(bad);
+              this.snackbar.open(`Bad Code: ${bad.message}`, 'X',{
+                duration: 6000,
+                verticalPosition: 'top'
+              });
+            });
+      } else {
+          console.log('No verification code entered');
+          this.snackbar.open('No verification code entered', 'X',{
+            duration: 6000,
+            verticalPosition: 'top'
+          });
+        }
+    } else {
+        this.confirmCode = false;
+        this.UserInput = true;
+        this.snackbar.open('Please enter the phone number', 'X',{
+          duration: 6000,
+          verticalPosition: 'top'
+        });
+      }
+  }
 
-export class PhoneNumber {
-  country: string = '+91';
-  phone: string = '8881616009';
+  // Sign-in with Google
 
-  // format phone numbers as E.164
-  get e164() {
-    const num = this.country + this.phone
-    return `+${num}`
+  signInWithGoogle() {
+    this.auth.signInWithGoogle()
+    .then((res) => {
+        this.router.navigateByUrl('custDashboard');
+    })
+    .catch((err) => {
+      this.snackbar.open(err.message, 'X',{
+        duration: 60000,
+        verticalPosition: 'top'
+      });
+    })
+  }
+
+  // Sign-in with Facebook
+
+  signInWithFB() {
+    this.auth.signInWithFB()
+    .then((res) => {
+      this.router.navigateByUrl('custDashboard');
+    })
+    .catch((err) => {
+      this.snackbar.open(err.message, 'X',{
+        duration: 60000,
+        verticalPosition: 'top'
+      });
+    })
+  }
+
+  // Sign-in with Email and Password
+  signInRegular() {
+    let email = this.sellerLoginFormGroup.get('username').value;
+    let password = this.sellerLoginFormGroup.get('password').value;
+    this.auth.signInRegular(email, password).then((res) => {
+      this.router.navigate(['sellerDashboard']);
+    })
+    .catch((error) => {
+      this.snackbar.open(error.message, 'X',{
+        duration: 60000,
+        verticalPosition: 'top'
+      });
+    })
   }
 }

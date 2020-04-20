@@ -17,6 +17,14 @@ body {
   outline-color: transparent;
 }
 
+.mat-raised-button.mat-primary {
+  outline-color: transparent;
+}
+
+.mat-raised-button.mat-warn {
+  outline-color: transparent;
+}
+
 .mat-fab.mat-seagreen {
   background-color: #009f4d;
   color: white;
@@ -27,6 +35,11 @@ body {
   background-color: #009f4d;
   color: white;
   outline-color: transparent;  
+}
+
+.mat-button.mat-darkslateblue {
+  color: darkslateblue;
+  outline-color: transparent;
 }
 
 .mat-toolbar.mat-seagreen {

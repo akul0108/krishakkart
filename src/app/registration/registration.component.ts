@@ -38,7 +38,6 @@ export class RegistrationComponent implements OnInit {
   register() {
     this.auth.register(this.signupFormGroup.value);
   }
-
 }
 
 //Terms of Use

@@ -32,6 +32,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatTabsModule} from '@angular/material/tabs';
 
 //Components
 import { RegistrationComponent, TermsOfUseDialog} from './registration/registration.component';
@@ -58,7 +59,7 @@ import { BookingReceivedComponent } from './android/Seller/booking-received/book
 import { BookingClosureComponent } from './android/Seller/booking-closure/booking-closure.component';
 import { FeedComponent } from './android/Seller/feed/feed.component';
 import { FaqsComponent } from './android/Seller/faqs/faqs.component';
-import { from } from 'rxjs';
+import { CustDashboardComponent } from './android/Customer/cust-dashboard/cust-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +98,7 @@ import { from } from 'rxjs';
     BookingClosureComponent,
     FeedComponent,
     FaqsComponent,
+    CustDashboardComponent,
   
   ],
   imports: [
@@ -123,6 +125,7 @@ import { from } from 'rxjs';
     MatBottomSheetModule,
     MatSelectModule,
     MatTooltipModule,
+    MatTabsModule,
     
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     // AngularFireModule.initializeApp(environment.firebaseConfig),
