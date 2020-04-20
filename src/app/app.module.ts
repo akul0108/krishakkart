@@ -128,9 +128,9 @@ import { CustDashboardComponent } from './android/Customer/cust-dashboard/cust-d
     MatTabsModule,
     
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    // AngularFireModule.initializeApp(environment.firebaseConfig),
-    // AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    // AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
 
   entryComponents:[

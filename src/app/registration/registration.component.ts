@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../services/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -13,7 +15,7 @@ export class RegistrationComponent implements OnInit {
 
   signupFormGroup : FormGroup;
 
-  constructor(public dialog: MatDialog, private auth: AuthService, private _formBuilder: FormBuilder) { }
+  constructor(public dialog: MatDialog, private auth: AuthService, private _formBuilder: FormBuilder, private router: Router, private snackbar: MatSnackBar) { }
 
   ngOnInit() {
     this.signupFormGroup = this._formBuilder.group({
@@ -36,7 +38,30 @@ export class RegistrationComponent implements OnInit {
   }
 
   register() {
-    this.auth.register(this.signupFormGroup.value);
+    this.auth.register(this.signupFormGroup.value)
+      .then( userCredential => {
+          userCredential.user.updateProfile({
+            displayName: this.signupFormGroup.get('fname').value + ' ' + this.signupFormGroup.get('lname').value
+          });
+          this.router.navigateByUrl('/sellerUpdateProfile');
+        })
+      .catch((error) => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        if (errorCode == 'auth/weak-password') {
+          this.snackbar.open('The password is too weak.', 'X', {
+            duration: 120000,
+            verticalPosition: 'top'
+          });
+        } else {
+          this.snackbar.open(errorMessage, 'X',{
+            duration: 120000,
+            verticalPosition: 'top'
+          });
+        }
+        console.log(error);
+      });
   }
 }
 

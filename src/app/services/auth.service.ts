@@ -11,36 +11,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AuthService {
 
-  constructor(/*public afAuth: AngularFireAuth*/ private router: Router, private snackbar: MatSnackBar) {
+  constructor(/*public afAuth: AngularFireAuth, private router: Router, private snackbar: MatSnackBar*/) {
     firebase.initializeApp(environment.firebaseConfig);
    }
 
   /* User Registration*/
-  register(newUser) {
-    firebase.auth().createUserWithEmailAndPassword(newUser.email, newUser.password).then( userCredential => {
-        userCredential.user.updateProfile({
-          displayName: newUser.fname + ' ' + newUser.lname
-        });
-        this.router.navigateByUrl('/sellerUpdateProfile');
-      }
-    )
-    .catch((error) => {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      if (errorCode == 'auth/weak-password') {
-        this.snackbar.open('The password is too weak.', 'X', {
-          duration: 120000,
-          verticalPosition: 'top'
-        });
-      } else {
-        this.snackbar.open(errorMessage, 'X',{
-          duration: 120000,
-          verticalPosition: 'top'
-        });
-      }
-      console.log(error);
-    });    
+  async register(newUser) {
+    return await firebase.auth().createUserWithEmailAndPassword(newUser.email, newUser.password);
   }
 
   // Sign in with Google
