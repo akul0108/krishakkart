@@ -16,7 +16,7 @@
         <form [formGroup]="custLoginFormGroup" class="mt-3" *ngIf="UserInput" (ngSubmit)="sendLoginCode()">
           <mat-form-field appearance="outline">
             <mat-label>Mobile Number</mat-label>
-            <input matInput type="text" placeholder="Enter Your Mobile Number" formControlName="mobile">
+            <input matInput type="text" placeholder="Enter Your Mobile Number" formControlName="mobile" inputmode="numeric">
             <mat-icon matSuffix>phone_enabled</mat-icon>
             <mat-error *ngIf="custLoginFormGroup?.controls?.mobile?.hasError('required')">Contact Number is
               <strong>required.</strong></mat-error>
@@ -38,7 +38,7 @@
         <form [formGroup]="OTPFormGroup" class="mt-3" *ngIf="confirmCode" (ngSubmit)="loginViaOTP()">
           <mat-form-field appearance="outline">
             <mat-label>OTP</mat-label>
-            <input matInput type="text" placeholder="Enter OTP Number" formControlName="otp">
+            <input matInput type="text" placeholder="Enter OTP Number" formControlName="otp" inputmode="numeric">
             <mat-icon matSuffix>vpn_key</mat-icon>
             <mat-error *ngIf="OTPFormGroup?.controls?.otp?.hasError('required')">OTP is
               <strong>required.</strong></mat-error>
@@ -81,7 +81,7 @@
         <form class="mt-3" [formGroup]="sellerLoginFormGroup" (ngSubmit)="signInRegular()">
           <mat-form-field appearance="outline">
             <mat-label>Username</mat-label>
-            <input matInput type="text" placeholder="Enter Username" formControlName="username">
+            <input matInput type="email" placeholder="Enter Username" formControlName="username" inputmode="email">
             <mat-icon matSuffix>person</mat-icon>
             <mat-error *ngIf="sellerLoginFormGroup?.controls?.username?.hasError('required')">Username is
               <strong>required.</strong></mat-error>
@@ -95,12 +95,11 @@
               <strong>required.</strong></mat-error>
           </mat-form-field>
 
-          <button mat-button color="darkslateblue"><a routerLink='#' class="text-decoration-none text-darkslateblue">Forgot Password?</a></button>
+          <button mat-button color="darkslateblue"><a routerLink='/forgetPwd' class="text-decoration-none text-darkslateblue">Forgot Password?</a></button>
           <button mat-button color="darkslateblue"><a routerLink='/Reg' class="text-decoration-none text-darkslateblue">Create account</a></button>
           <button mat-raised-button color="darkslateblue" class="w-25" (click)="signInRegular()">Login</button>
       </form>
       </mat-tab>
     </mat-tab-group>
-    <!-- <div id="recaptcha-container"></div> -->
   </mat-card>
 </div>

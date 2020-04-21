@@ -15,7 +15,7 @@
         <mat-card-content>  
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput [(ngModel)]="email" type="email" placeholder="Enter Your Email Address" formControlName="email">
+            <input matInput type="text" placeholder="Enter Your Email Address" formControlName="email" inputmode="email">
             <mat-icon matSuffix>email</mat-icon>
             <mat-error *ngIf="signupFormGroup?.controls?.email?.hasError('required')">Email is
               <strong>required.</strong>
@@ -26,7 +26,7 @@
 
           <mat-form-field appearance="outline">
             <mat-label>Mobile Number</mat-label>
-            <input matInput type="tel" placeholder="Enter Your Mobile Number" formControlName="mobile">
+            <input matInput type="tel" placeholder="Enter Your Mobile Number" formControlName="mobile" inputmode="numeric">
             <mat-icon matSuffix>phone_enabled</mat-icon>
             <mat-error *ngIf="signupFormGroup?.controls?.mobile?.hasError('required')">Contact Number is
               <strong>required.</strong></mat-error>
@@ -58,8 +58,8 @@
   
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput [(ngModel)]="password" [type]="phide ? 'text':'password'" placeholder="Set Password" formControlName="password" aria-describedby="passwordHelp">
-            <mat-icon matSuffix (click)="phide = !phide" class="pointer">{{phide ? 'visibility' : 'visibility_off'}}
+            <input matInput [type]="phide ? 'text':'password'" placeholder="Set Password" formControlName="password">
+            <mat-icon matSuffix (click)="phide = !phide" class="pointer">{{phide ? 'visibility_off' : 'visibility'}}
             </mat-icon>
             <mat-hint matTooltip="• Password should be 8 Alphanumeric Characters. &#13; • Password should contain atleast 1 special Character. &#13; • Password should contain atleast 1 uppercase letter. &#13; • Password should contain atleast 1 lowercase letter. &#13; • Password should contain atleast 1 number."
             matTooltipClass="multiple-line">Password Hint</mat-hint>
@@ -71,8 +71,8 @@
   
           <mat-form-field appearance="outline">
             <mat-label>Confirm Password</mat-label>
-            <input matInput [type]="cphide ? 'text':'password'" formControlName="cpassword" placeholder="Set Password" aria-describedby="passwordHelp" CompareValidator="password">
-            <mat-icon matSuffix (click)="cphide = !cphide" class="pointer">{{cphide ? 'visibility' : 'visibility_off'}}
+            <input matInput [type]="cphide ? 'text':'password'" formControlName="cpassword" placeholder="Set Password" CompareValidator="password">
+            <mat-icon matSuffix (click)="cphide = !cphide" class="pointer">{{cphide ? 'visibility_off' : 'visibility'}}
             </mat-icon>
             <mat-error *ngIf="signupFormGroup?.controls?.cpassword?.hasError('required')">Confirm Password is
               <strong>required.</strong></mat-error>

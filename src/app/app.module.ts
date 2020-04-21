@@ -60,6 +60,7 @@ import { BookingClosureComponent } from './android/Seller/booking-closure/bookin
 import { FeedComponent } from './android/Seller/feed/feed.component';
 import { FaqsComponent } from './android/Seller/faqs/faqs.component';
 import { CustDashboardComponent } from './android/Customer/cust-dashboard/cust-dashboard.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -99,6 +100,7 @@ import { CustDashboardComponent } from './android/Customer/cust-dashboard/cust-d
     FeedComponent,
     FaqsComponent,
     CustDashboardComponent,
+    ForgotPasswordComponent,
   
   ],
   imports: [

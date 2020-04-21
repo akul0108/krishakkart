@@ -14,6 +14,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class RegistrationComponent implements OnInit {
 
   signupFormGroup : FormGroup;
+  cphide: boolean;
+  phide: boolean;
 
   constructor(public dialog: MatDialog, private auth: AuthService, private _formBuilder: FormBuilder, private router: Router, private snackbar: MatSnackBar) { }
 
@@ -43,7 +45,7 @@ export class RegistrationComponent implements OnInit {
           userCredential.user.updateProfile({
             displayName: this.signupFormGroup.get('fname').value + ' ' + this.signupFormGroup.get('lname').value
           });
-          this.router.navigateByUrl('/sellerUpdateProfile');
+          this.router.navigateByUrl('/sellerDashboard');
         })
       .catch((error) => {
         // Handle Errors here.

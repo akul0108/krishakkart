@@ -19,8 +19,8 @@ import { FaqsComponent } from '../faqs/faqs.component';
 export class DashboardComponent implements OnInit {
 
   public menuItems: object;
-  protected allocComponent: any = HomeComponent;
-  protected componentName: string = 'Dashboard';
+  allocComponent: any = HomeComponent;
+  componentName: string = 'Dashboard';
 
   constructor() { 
     this.menuItems = ROUTES;
