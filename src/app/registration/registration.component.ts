@@ -45,6 +45,7 @@ export class RegistrationComponent implements OnInit {
           userCredential.user.updateProfile({
             displayName: this.signupFormGroup.get('fname').value + ' ' + this.signupFormGroup.get('lname').value
           });
+          this.auth.setToken();
           this.router.navigateByUrl('/sellerDashboard');
         })
       .catch((error) => {

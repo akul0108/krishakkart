@@ -5,19 +5,35 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FirebaseAuth } from '@angular/fire';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(/*public afAuth: AngularFireAuth, private router: Router, private snackbar: MatSnackBar*/) {
+  // private userDetails: firebase.User = null;
+  // authState: FirebaseAuth = null;
+
+  constructor(private router: Router, /*public afAuth: AngularFireAuth, private snackbar: MatSnackBar*/) {
     firebase.initializeApp(environment.firebaseConfig);
-   }
+    
+    // afAuth.authState.subscribe((user) => {
+    //   if(user) {
+    //     this.userDetails = user;
+    //     localStorage.setItem('user', JSON.stringify(this.userDetails));
+    //     JSON.parse(localStorage.getItem('user'));
+    //     console.log(this.userDetails);
+    //   } else {
+    //     localStorage.setItem('user', null);
+    //     JSON.parse(localStorage.getItem('user'));
+    //   }
+    // })
+  }
 
   /* User Registration*/
-  async register(newUser) {
-    return await firebase.auth().createUserWithEmailAndPassword(newUser.email, newUser.password);
+   register(newUser) {
+    return firebase.auth().createUserWithEmailAndPassword(newUser.email, newUser.password);
   }
 
   // Sign in with Google
@@ -43,5 +59,47 @@ export class AuthService {
   // Password Reset
   sendEmail(email) {
     return firebase.auth().sendPasswordResetEmail(email);
+  }
+
+  // isLoggedIn Property
+  get isLoggedIn() {
+    var userPayload = this.getUserPayload();
+    if(userPayload) 
+      return userPayload.exp > Date.now() / 1000;
+    else
+     return false;
+  }
+
+  // logout
+  logout() {
+    firebase.auth().signOut().then(() => {
+      this.deleteToken();
+      this.router.navigate(['login']);
+    });
+  }
+
+  //Token Methods
+  async setToken() {
+    await firebase.auth().currentUser.getIdToken().then( token => {
+      localStorage.setItem('accessToken', token);
+    })
+  }
+
+  getToken() {
+    return localStorage.getItem('accessToken');
+  }
+ 
+  deleteToken() {
+    localStorage.removeItem('accessToken');
+  }
+ 
+  getUserPayload() {
+    var token = this.getToken();
+    if(token) {
+      var userPayload = atob(token.split('.')[1]);
+      return JSON.parse(userPayload);
+    }
+    else
+     return null;
   }
 }

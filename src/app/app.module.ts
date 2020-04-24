@@ -10,6 +10,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { CompareValidatorDirective } from './services/compare-validator.directive';
 
+//Guards
+import { AuthGuardGuard } from './Guards/auth-guard.guard';
+import { LoginPageGuardGuard } from './Guards/login-page-guard.guard';
+
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -61,6 +65,8 @@ import { FeedComponent } from './android/Seller/feed/feed.component';
 import { FaqsComponent } from './android/Seller/faqs/faqs.component';
 import { CustDashboardComponent } from './android/Customer/cust-dashboard/cust-dashboard.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -101,6 +107,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     FaqsComponent,
     CustDashboardComponent,
     ForgotPasswordComponent,
+    PasswordResetComponent,
   
   ],
   imports: [
@@ -130,9 +137,9 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     MatTabsModule,
     
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    // AngularFireModule.initializeApp(environment.firebaseConfig),
+    // AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    // AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
 
   entryComponents:[
@@ -156,7 +163,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     FaqsComponent,
   ],
   
-  providers: [AuthService],
+  providers: [AuthService, AuthGuardGuard, LoginPageGuardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

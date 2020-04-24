@@ -12,6 +12,7 @@
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+  height: 100%;
 }
 
 .text-darkslateblue {
@@ -45,10 +46,6 @@
   .mat-form-field {
     width: 49%;
     margin-right: 5px;
-  }
-
-  .bg-image {
-    height: 100%;
   }
 }
 

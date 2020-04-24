@@ -9,6 +9,8 @@ export class CustDashboardComponent implements OnInit {
 
   constructor() { }
 
+  title = "Krishakkart"
+
   ngOnInit(): void {
   }
 

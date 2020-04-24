@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import * as firebase from 'firebase';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
@@ -21,8 +21,11 @@ export class LoginComponent implements OnInit {
   UserInput : boolean = true;
   confirmationResult : any;
 
-  constructor( private auth: AuthService, private router: Router, private snackbar: MatSnackBar, private _formBuilder: FormBuilder) { 
-  }
+  constructor( private auth: AuthService, 
+               private router: Router, 
+               private snackbar: MatSnackBar, 
+               private _formBuilder: FormBuilder, 
+               private ngZone: NgZone) { }
 
   ngOnInit() {
     this.custLoginFormGroup = this._formBuilder.group({
@@ -69,11 +72,11 @@ export class LoginComponent implements OnInit {
     if(this.confirmationResult != null) {
       let otp = this.OTPFormGroup.get('otp').value
       if(otp != null) {
-        console.log(otp);
         this.confirmationResult.confirm(otp)
           .then((good) => {
                 // all checks out
               this.confirmationResult = '';
+              this.auth.setToken();
               this.router.navigateByUrl('custDashboard');
             })
             .catch((bad) => {
@@ -106,7 +109,10 @@ export class LoginComponent implements OnInit {
   signInWithGoogle() {
     this.auth.signInWithGoogle()
     .then((res) => {
-        this.router.navigateByUrl('custDashboard');
+        this.ngZone.run(() => {
+          this.auth.setToken();
+          this.router.navigateByUrl('custDashboard');
+        })
     })
     .catch((err) => {
       this.snackbar.open(err.message, 'X',{
@@ -121,7 +127,10 @@ export class LoginComponent implements OnInit {
   signInWithFB() {
     this.auth.signInWithFB()
     .then((res) => {
-      this.router.navigateByUrl('custDashboard');
+      this.ngZone.run(() => {
+        this.auth.setToken();
+        this.router.navigateByUrl('custDashboard');
+      })
     })
     .catch((err) => {
       this.snackbar.open(err.message, 'X',{
@@ -136,6 +145,7 @@ export class LoginComponent implements OnInit {
     let email = this.sellerLoginFormGroup.get('username').value;
     let password = this.sellerLoginFormGroup.get('password').value;
     this.auth.signInRegular(email, password).then((res) => {
+      this.auth.setToken();
       this.router.navigate(['sellerDashboard']);
     })
     .catch((error) => {

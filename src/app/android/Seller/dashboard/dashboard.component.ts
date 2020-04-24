@@ -10,6 +10,8 @@ import { BookingReceivedComponent } from '../booking-received/booking-received.c
 import { BookingClosureComponent } from '../booking-closure/booking-closure.component';
 import { FeedComponent } from '../feed/feed.component';
 import { FaqsComponent } from '../faqs/faqs.component';
+import { PasswordResetComponent } from 'src/app/password-reset/password-reset.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,7 +24,7 @@ export class DashboardComponent implements OnInit {
   allocComponent: any = HomeComponent;
   componentName: string = 'Dashboard';
 
-  constructor() { 
+  constructor(private auth: AuthService) { 
     this.menuItems = ROUTES;
   }
 
@@ -59,6 +61,10 @@ export class DashboardComponent implements OnInit {
       case 'feed':
         this.allocComponent = FeedComponent;
         break;
+
+      case 'chngPwd':
+        this.allocComponent = PasswordResetComponent;
+        break;
     
       case 'contact':
         this.allocComponent = ContactComponent;
@@ -66,6 +72,10 @@ export class DashboardComponent implements OnInit {
 
       case 'faqs':
         this.allocComponent = FaqsComponent;
+        break;
+
+      case 'logout':
+        this.auth.logout();
         break;
 
       default: 

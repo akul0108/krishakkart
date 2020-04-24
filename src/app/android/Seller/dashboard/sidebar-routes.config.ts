@@ -11,5 +11,5 @@ export const ROUTES = [
     { path: 'chngLang', title: 'Change Language', icon: 'g_translate', children: null },
     { path: 'contact', title: 'Contact Us', icon: 'contacts', children: null },
     { path: 'faqs', title: 'FAQs', icon: 'contact_support', children: null },
-    { path: '', title: 'Logout', icon: 'exit_to_app', children: null },
+    { path: 'logout', title: 'Logout', icon: 'exit_to_app', children: null },
 ]
