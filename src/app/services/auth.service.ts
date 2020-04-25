@@ -15,7 +15,7 @@ export class AuthService {
   // private userDetails: firebase.User = null;
   // authState: FirebaseAuth = null;
 
-  constructor(private router: Router, /*public afAuth: AngularFireAuth, private snackbar: MatSnackBar*/) {
+  constructor(private router: Router, /*public afAuth: AngularFireAuth,*/ private snackbar: MatSnackBar) {
     firebase.initializeApp(environment.firebaseConfig);
 
     
@@ -63,6 +63,31 @@ export class AuthService {
   // Password Reset
   sendEmail(email) {
     return firebase.auth().sendPasswordResetEmail(email);
+  }
+
+  // Password Update
+  pwdUpdate(currpwd, newPwd) {
+    this.reauthenticate(currpwd).then(() => {
+      let user = firebase.auth().currentUser;
+      user.updatePassword(newPwd).then( res => {
+        this.snackbar.open('Password is Updated', 'X', {
+          duration: 3000,
+          verticalPosition: 'top',
+        });
+      })
+      .catch(error => {
+        this.snackbar.open(`Error: ${error.message}`, 'X', {
+          duration: 3000,
+          verticalPosition: 'top',
+        });
+      });
+    })
+  }
+
+  reauthenticate(currpwd) {
+    let user = firebase.auth().currentUser;
+    let cred = firebase.auth.EmailAuthProvider.credential(user.email, currpwd);
+    return user.reauthenticateWithCredential(cred);
   }
 
   // isLoggedIn Property
