@@ -1,0 +1,20 @@
+<mat-toolbar>
+    <img src="../../../assets/logo/kkheaderlogo.png" alt="logo"/>
+    <span class="ml-2">{{title}}</span>
+    <span class="spacer"></span>
+    <button mat-icon-button (click)="hide = !hide">
+        <mat-icon>account_circle</mat-icon>
+    </button>
+    <button mat-icon-button (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+    </button>
+</mat-toolbar>
+
+<!-- Hello -->
+
+<mat-card [hidden]="hide">
+    <h1>{{name}}</h1>
+    <mat-card-actions align="center">
+        <button mat-stroked-button class="rounded-corner">Manage your Krishakkart Account</button>
+    </mat-card-actions>
+</mat-card>

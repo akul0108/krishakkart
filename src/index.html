@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Krishakkart</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="max-age=31536000"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="icon" type="image/x-icon" href="assets\logo\kkheaderlogo.png">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJtWDmz7wVSJLtU64MHt92f7fxUP_H_S0" type="text/javascript"></script>
+  <!-- Jquery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    (function ($) {
+      "use strict";
+      $.fn.counterUp = function (options) {
+        var settings = $.extend({
+            time: 400,
+            delay: 10,
+            offset: 100,
+            beginAt: 0,
+            formatter: false,
+            context: "window",
+            callback: function () {}
+          }, options),
+          s;
+        return this.each(function () {
+          var $this = $(this),
+            counter = {
+              time: $(this).data("counterup-time") || settings.time,
+              delay: $(this).data("counterup-delay") || settings.delay,
+              offset: $(this).data("counterup-offset") || settings.offset,
+              beginAt: $(this).data("counterup-beginat") || settings.beginAt,
+              context: $(this).data("counterup-context") || settings.context
+            };
+          var counterUpper = function () {
+            var nums = [];
+            var divisions = counter.time / counter.delay;
+            var num = $(this).attr("data-num") ? $(this).attr("data-num") : $this.text();
+            var isComma = /[0-9]+,[0-9]+/.test(num);
+            num = num.replace(/,/g, "");
+            var decimalPlaces = (num.split(".")[1] || []).length;
+            if (counter.beginAt > num) counter.beginAt = num;
+            var isTime = /[0-9]+:[0-9]+:[0-9]+/.test(num);
+            if (isTime) {
+              var times = num.split(":"),
+                m = 1;
+              s = 0;
+              while (times.length > 0) {
+                s += m * parseInt(times.pop(), 10);
+                m *= 60
+              }
+            }
+            for (var i = divisions; i >= counter.beginAt / num * divisions; i--) {
+              var newNum = parseFloat(num / divisions * i).toFixed(decimalPlaces);
+              if (isTime) {
+                newNum = parseInt(s / divisions * i);
+                var hours = parseInt(newNum / 3600) % 24;
+                var minutes = parseInt(newNum / 60) % 60;
+                var seconds = parseInt(newNum % 60, 10);
+                newNum = (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) +
+                  ":" + (seconds < 10 ? "0" + seconds : seconds)
+              }
+              if (isComma) {
+                while (/(\d+)(\d{3})/.test(newNum.toString())) {
+                  newNum = newNum.toString().replace(/(\d+)(\d{3})/, "$1" + "," + "$2")
+                }
+              }
+              if (settings.formatter) {
+                newNum = settings.formatter.call(this, newNum)
+              }
+              nums.unshift(newNum)
+            }
+            $this.data("counterup-nums", nums);
+            $this.text(counter.beginAt);
+            var f = function () {
+              if (!$this.data("counterup-nums")) {
+                settings.callback.call(this);
+                return
+              }
+              $this.html($this.data("counterup-nums").shift());
+              if ($this.data("counterup-nums").length) {
+                setTimeout($this.data("counterup-func"), counter.delay)
+              } else {
+                $this.data("counterup-nums", null);
+                $this.data("counterup-func", null);
+                settings.callback.call(this)
+              }
+            };
+            $this.data("counterup-func", f);
+            setTimeout($this.data("counterup-func"), counter.delay)
+          };
+          $this.waypoint(function (direction) {
+            counterUpper();
+            this.destroy()
+          }, {
+            offset: counter.offset + "%",
+            context: counter.context
+          })
+        })
+      }
+    })(jQuery);
+
+  </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+   <script>
+    jQuery(document).ready(function ($) {
+      $('.counter').counterUp({
+        delay: 10,
+        time: 2000
+      });
+    });
+  </script>
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#009f4d">
+</head>
+<body>
+  <app-root></app-root>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+</body>
+</html>

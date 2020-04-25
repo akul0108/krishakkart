@@ -1,0 +1,72 @@
+.mb-6 {
+    margin-bottom: 4.4rem !important;
+}
+
+.bg-image{
+  background: linear-gradient(
+    rgba(0,0,0,0.5),
+    rgba(0,0,0,0.5)
+  ),
+  url(src\assets\background_images\background_image1.jpg) no-repeat center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  height: 100%;
+}
+
+.text-darkslateblue {
+  color: darkslateblue;
+}
+
+.primary {
+  color: darkslateblue;
+}
+
+.mat-raised-button {
+  width: 97%;
+}
+
+.mat-card-actions {
+  margin-top: -22px;
+} 
+
+::ng-deep .multiple-line {
+	white-space: pre-line;
+}
+
+/*Media Query for Laptop and Above*/
+
+@media (min-width: 992px) {
+  .mat-card {
+    border-radius: 30px;
+    width: 100%;
+  }
+
+  .mat-form-field {
+    width: 49%;
+    margin-right: 5px;
+  }
+}
+
+/* Media Query for Tablets and less */
+
+@media (max-width: 991.98px) {
+  .mat-card {
+    border-radius: 30px;
+    width: 100%;
+  }
+
+  .mat-form-field {
+    width: 100%;
+  }
+}
+
+/*Media Query for Phones/ Mobiles and less*/
+
+@media (max-width: 767.98px) {
+  .mat-card {
+    border-radius: 30px;
+    width: 100%;
+  }
+}

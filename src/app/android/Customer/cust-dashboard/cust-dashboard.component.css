@@ -1,0 +1,35 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.rounded-corner {
+    border-radius: 20px;
+}
+
+::ng-deep .mat-stroked-button {
+    outline: 0 !important;
+}
+
+/*Media Query for Laptop and Above*/
+  
+@media (min-width: 992px) {
+    img {
+        width: 6%;
+    }
+}
+  
+/* Media Query for Tablets and less */
+  
+@media (max-width: 991.98px) {
+    img {
+        width: 10%;
+    }   
+}
+  
+/*Media Query for Phones/ Mobiles and less*/
+  
+@media (max-width: 767.98px) {
+    img {
+        width: 15%;
+    }    
+}

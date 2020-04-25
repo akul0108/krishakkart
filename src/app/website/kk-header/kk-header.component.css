@@ -1,0 +1,17 @@
+header {
+    background-color:  #009f4d;
+} 
+
+.affix {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    -webkit-transition: padding 0.2s linear;
+    -moz-transition: padding 0.2s linear;
+    -o-transition: padding 0.2s linear;
+    transition: padding 0.2s linear;
+}
+
+.second_header {
+    -webkit-box-shadow : 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
