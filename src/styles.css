@@ -42,6 +42,10 @@ body {
   outline-color: transparent;
 }
 
+.mat-icon-button {
+  outline: 0 !important;
+}
+
 .mat-toolbar.mat-seagreen {
   background-color: #009f4d;
   color: white;

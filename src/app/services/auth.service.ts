@@ -17,6 +17,8 @@ export class AuthService {
 
   constructor(private router: Router, /*public afAuth: AngularFireAuth, private snackbar: MatSnackBar*/) {
     firebase.initializeApp(environment.firebaseConfig);
+
+    
     
     // afAuth.authState.subscribe((user) => {
     //   if(user) {
@@ -30,6 +32,8 @@ export class AuthService {
     //   }
     // })
   }
+
+  currentUser: string;
 
   /* User Registration*/
    register(newUser) {

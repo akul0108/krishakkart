@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-cust-dashboard',
@@ -7,11 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
-  title = "Krishakkart"
-
+  title = "Krishakkart";
+  hide : boolean = true;
+  
+  
   ngOnInit(): void {
   }
 
+  logout() {
+    this.auth.logout();
+  }
 }

@@ -17,7 +17,7 @@ export class LoginPageGuardGuard implements CanActivate {
       const password = 'password';
       const payload = this.auth.getUserPayload();
       
-      if (payload === null) {
+      if (payload === null || !this.auth.isLoggedIn) {
         return true;
       } else {
           const role = payload.firebase.sign_in_provider;

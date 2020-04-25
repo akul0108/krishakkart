@@ -12,6 +12,8 @@ import { FeedComponent } from '../feed/feed.component';
 import { FaqsComponent } from '../faqs/faqs.component';
 import { PasswordResetComponent } from 'src/app/password-reset/password-reset.component';
 import { AuthService } from 'src/app/services/auth.service';
+import * as firebase from 'firebase';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,8 +25,8 @@ export class DashboardComponent implements OnInit {
   public menuItems: object;
   allocComponent: any = HomeComponent;
   componentName: string = 'Dashboard';
-
-  constructor(private auth: AuthService) { 
+  
+  constructor(private auth: AuthService, private dialog: MatDialog) { 
     this.menuItems = ROUTES;
   }
 
@@ -91,5 +93,35 @@ export class DashboardComponent implements OnInit {
     } else {
         return false;
     }
+  }
+
+  profileDialog() {
+    this.dialog.open(profileDialog, {
+      autoFocus: false
+    });
+  }
+}
+
+@Component({
+  selector: 'profile-dialog',
+  templateUrl: './profile-dialog.html',
+  styleUrls: ['./dashboard.component.css']
+})
+export class profileDialog {
+
+  protected name: string;
+  protected email: string;
+
+  constructor(private auth: AuthService) {}
+
+  ngOnInit(): void {
+    firebase.auth().onAuthStateChanged((user) => {
+      if(user) {
+        this.name = user.displayName;
+        this.email = user.email;
+      } else {
+        console.log('No one is logged in.');
+      }
+    })
   }
 }

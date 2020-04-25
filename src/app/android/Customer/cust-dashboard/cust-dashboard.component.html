@@ -1,16 +1,20 @@
 <mat-toolbar>
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-2">
-                <img src="../../../assets/logo/kkheaderlogo.png" alt="logo" width="150%"/>
-            </div>
-            <div class="col-8">
-                <h1>{{title}}</h1>
-            </div>
-            <div class="col-2">
-                <!-- <span class="spacer"></span> -->
-                <mat-icon class="pl-4 mt-2">account_circle</mat-icon>
-            </div>
-        </div>
-    </div>
+    <img src="../../../assets/logo/kkheaderlogo.png" alt="logo"/>
+    <span class="ml-2">{{title}}</span>
+    <span class="spacer"></span>
+    <button mat-icon-button (click)="hide = !hide">
+        <mat-icon>account_circle</mat-icon>
+    </button>
+    <button mat-icon-button (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+    </button>
 </mat-toolbar>
+
+<!-- Hello -->
+
+<mat-card [hidden]="hide">
+    <h1>{{name}}</h1>
+    <mat-card-actions align="center">
+        <button mat-stroked-button class="rounded-corner">Manage your Krishakkart Account</button>
+    </mat-card-actions>
+</mat-card>

@@ -52,7 +52,7 @@ import { KkContactUsComponent } from './website/kk-contact-us/kk-contact-us.comp
 import { KkRecognizeComponent } from './website/kk-recognize/kk-recognize.component';
 import { KkServicesComponent } from './website/kk-services/kk-services.component';
 import { KkNetworkComponent } from './website/kk-network/kk-network.component';
-import { DashboardComponent } from './android/Seller/dashboard/dashboard.component';
+import { DashboardComponent, profileDialog } from './android/Seller/dashboard/dashboard.component';
 import { HomeComponent } from './android/Seller/home/home.component';
 import { ProfileUpdateComponent, BottomSheet } from './android/Seller/profile-update/profile-update.component';
 import { ContactComponent } from './android/Seller/contact/contact.component';
@@ -82,6 +82,9 @@ import { from } from 'rxjs';
     // BuyerLoginDialog,
     // BuyerRegDialog,
     BottomSheet,
+
+    //Seller Dialogs
+    profileDialog,
 
     //Components
     KkFooterComponent,
@@ -149,6 +152,9 @@ import { from } from 'rxjs';
     // BuyerLoginDialog,
     // BuyerRegDialog,
     BottomSheet,
+
+    //seller Dialogs
+    profileDialog,
 
     //Components
     HomeComponent,

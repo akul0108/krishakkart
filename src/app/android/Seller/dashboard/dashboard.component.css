@@ -29,3 +29,13 @@
     top: 0px;
     left: 18%; 
 }
+
+/* CSS for Dialog */
+
+.rounded-corner {
+  border-radius: 20px;
+}
+
+::ng-deep .mat-stroked-button {
+  outline: 0 !important;
+}

@@ -77,6 +77,7 @@ export class LoginComponent implements OnInit {
                 // all checks out
               this.confirmationResult = '';
               this.auth.setToken();
+              this.recaptchaVerifier.clear();
               this.router.navigateByUrl('custDashboard');
             })
             .catch((bad) => {
