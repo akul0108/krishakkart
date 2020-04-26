@@ -1,6 +1,5 @@
 import { Directive, Input } from '@angular/core';
 import { Validator, NG_VALIDATORS, AbstractControl } from '@angular/forms';
-import { Key } from 'protractor';
 
 @Directive({
   selector: '[CompareValidator]',

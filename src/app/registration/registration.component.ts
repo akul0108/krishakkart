@@ -14,8 +14,6 @@ import * as firebase from 'firebase';
 })
 export class RegistrationComponent implements OnInit {
 
-  public captchaVerifier: firebase.auth.RecaptchaVerifier;
-
   signupFormGroup : FormGroup;
   cphide: boolean;
   phide: boolean;
@@ -35,11 +33,6 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  ngAfterViewInit() {
-    this.captchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
-    this.captchaVerifier.render();
-  }
-
   openTermsofUse(){
     const toc = this.dialog.open(TermsOfUseDialog);
     // toc.afterClosed().subscribe(result => {
@@ -48,7 +41,6 @@ export class RegistrationComponent implements OnInit {
   }
 
   register() {
-    const Verifier = this.captchaVerifier;
     this.auth.register(this.signupFormGroup.value)
       .then( userCredential => {
           userCredential.user.updateProfile({
