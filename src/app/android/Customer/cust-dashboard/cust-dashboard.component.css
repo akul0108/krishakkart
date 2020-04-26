@@ -17,7 +17,7 @@
         width: 6%;
     }
 
-    .icon {
+    .profile-icon-toolbar {
         width: 33px;
     }
 }
@@ -29,7 +29,7 @@
         width: 10%;
     }   
 
-    .icon {
+    .profile-icon-toolbar {
         width: 33px;
     }
 }
@@ -40,4 +40,12 @@
     .logo {
         width: 15%;
     }    
+}
+
+/* CSS Dialog  */
+
+.dialog-profile-icon {
+    height: 100px;
+    width: 100px;
+    font-size: 100px;
 }

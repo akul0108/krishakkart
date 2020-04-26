@@ -2,10 +2,10 @@
     <img src="../../../assets/logo/kkheaderlogo.png" alt="logo" class="logo"/>
     <span class="ml-2">{{title}}</span>
     <span class="spacer"></span>
-    <button mat-button (click)="hide = !hide">
+    <button mat-button (click)="profileDialog()">
         Hi, {{ phone || fname }}
         <mat-icon *ngIf="phone" class="pl-2">account_circle</mat-icon>
-        <img *ngIf="fname" class="rounded-circle pl-2 icon" [src]="picURL" />
+        <img *ngIf="fname" class="rounded-circle pl-2 profile-icon-toolbar" [src]="picURL" />
     </button>
     <button mat-icon-button (click)="logout()">
         <mat-icon>exit_to_app</mat-icon>
@@ -13,10 +13,3 @@
 </mat-toolbar>
 
 <!-- Hello -->
-
-<mat-card [hidden]="hide">
-    <h1>{{name}}</h1>
-    <mat-card-actions align="center">
-        <button mat-stroked-button class="rounded-corner">Manage your Krishakkart Account</button>
-    </mat-card-actions>
-</mat-card>

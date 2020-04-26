@@ -63,7 +63,7 @@ import { BookingReceivedComponent } from './android/Seller/booking-received/book
 import { BookingClosureComponent } from './android/Seller/booking-closure/booking-closure.component';
 import { FeedComponent } from './android/Seller/feed/feed.component';
 import { FaqsComponent } from './android/Seller/faqs/faqs.component';
-import { CustDashboardComponent } from './android/Customer/cust-dashboard/cust-dashboard.component';
+import { CustDashboardComponent, customerProfileDialog } from './android/Customer/cust-dashboard/cust-dashboard.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { from } from 'rxjs';
@@ -82,6 +82,9 @@ import { from } from 'rxjs';
     // BuyerLoginDialog,
     // BuyerRegDialog,
     BottomSheet,
+
+    //Customer Dialogs
+    customerProfileDialog,
 
     //Seller Dialogs
     profileDialog,
@@ -111,7 +114,7 @@ import { from } from 'rxjs';
     CustDashboardComponent,
     ForgotPasswordComponent,
     PasswordResetComponent,
-  
+    
   ],
   imports: [
     BrowserModule,
@@ -152,7 +155,9 @@ import { from } from 'rxjs';
     // BuyerLoginDialog,
     // BuyerRegDialog,
     BottomSheet,
-
+    //Customer Dialogs
+    customerProfileDialog,
+    
     //seller Dialogs
     profileDialog,
 

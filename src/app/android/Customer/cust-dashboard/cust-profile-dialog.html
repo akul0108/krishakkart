@@ -1,0 +1,16 @@
+<div class="text-center">
+    <img class="rounded-circle w-75 mb-3" [src]="picURL" />
+    <mat-icon *ngIf="phone" class="dialog-profile-icon">account_circle</mat-icon>
+    <h3>{{phone}}</h3>
+    <h3>{{name | titlecase}}</h3>
+    <p>{{email | lowercase}}</p>
+    <mat-divider class="mb-3"></mat-divider>
+    <mat-card-actions align="center">
+        <div class="my-3">
+            <button mat-stroked-button class="rounded-corner">Manage your Krishakkart Account</button>
+        </div>
+        <div>
+            <button mat-stroked-button mat-dialog-close class="rounded-corner" (click)="auth.logout()">Logout</button>
+        </div>
+    </mat-card-actions>
+</div>
