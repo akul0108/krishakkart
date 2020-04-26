@@ -17,7 +17,6 @@ export class AppComponent {
       const snack = this.snackbar.open('New Version Available', 'UPDATE', {
         duration: 120000,
       });
-
       snack
         .onAction()
         .subscribe(() => {

@@ -1,9 +1,11 @@
 <mat-toolbar>
-    <img src="../../../assets/logo/kkheaderlogo.png" alt="logo"/>
+    <img src="../../../assets/logo/kkheaderlogo.png" alt="logo" class="logo"/>
     <span class="ml-2">{{title}}</span>
     <span class="spacer"></span>
-    <button mat-icon-button (click)="hide = !hide">
-        <mat-icon>account_circle</mat-icon>
+    <button mat-button (click)="hide = !hide">
+        Hi, {{ phone || fname }}
+        <mat-icon *ngIf="phone" class="pl-2">account_circle</mat-icon>
+        <img *ngIf="fname" class="rounded-circle pl-2 icon" [src]="picURL" />
     </button>
     <button mat-icon-button (click)="logout()">
         <mat-icon>exit_to_app</mat-icon>

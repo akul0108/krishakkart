@@ -68,16 +68,15 @@ export class LoginComponent implements OnInit {
             });
   }
 
-  loginViaOTP() {
+  async loginViaOTP() {
     if(this.confirmationResult != null) {
       let otp = this.OTPFormGroup.get('otp').value
       if(otp != null) {
-        this.confirmationResult.confirm(otp)
+        await this.confirmationResult.confirm(otp)
           .then((good) => {
                 // all checks out
               this.confirmationResult = '';
               this.auth.setToken();
-              this.recaptchaVerifier.clear();
               this.router.navigateByUrl('custDashboard');
             })
             .catch((bad) => {

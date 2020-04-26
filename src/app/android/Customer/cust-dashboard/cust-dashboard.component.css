@@ -13,23 +13,31 @@
 /*Media Query for Laptop and Above*/
   
 @media (min-width: 992px) {
-    img {
+    .logo {
         width: 6%;
+    }
+
+    .icon {
+        width: 33px;
     }
 }
   
 /* Media Query for Tablets and less */
   
 @media (max-width: 991.98px) {
-    img {
+    .logo {
         width: 10%;
     }   
+
+    .icon {
+        width: 33px;
+    }
 }
   
 /*Media Query for Phones/ Mobiles and less*/
   
 @media (max-width: 767.98px) {
-    img {
+    .logo {
         width: 15%;
     }    
 }
