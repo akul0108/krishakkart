@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import * as firebase from 'firebase';
 
 
 @Component({
@@ -12,6 +13,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
+
+  public captchaVerifier: firebase.auth.RecaptchaVerifier;
 
   signupFormGroup : FormGroup;
   cphide: boolean;
@@ -32,6 +35,11 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit() {
+    this.captchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+    this.captchaVerifier.render();
+  }
+
   openTermsofUse(){
     const toc = this.dialog.open(TermsOfUseDialog);
     // toc.afterClosed().subscribe(result => {
@@ -40,6 +48,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   register() {
+    const Verifier = this.captchaVerifier;
     this.auth.register(this.signupFormGroup.value)
       .then( userCredential => {
           userCredential.user.updateProfile({

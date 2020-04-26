@@ -22,12 +22,12 @@
             </button>
             <h1 class="pl-2">{{componentName}}</h1>
             <span class="spacer"></span>
-            <button mat-icon-button (click)="profileDialog()">
-              <mat-icon>account_circle</mat-icon>
+            <button mat-button (click)="profileDialog()">
+              Hi, {{fname | titlecase}}
+              <mat-icon class="pl-2">account_circle</mat-icon>
             </button>
           </mat-toolbar>
         </div>
-        {{name}}
         <ng-container *ngComponentOutlet="allocComponent"></ng-container>
       </div>
     </mat-sidenav-content>

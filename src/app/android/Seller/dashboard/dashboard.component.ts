@@ -25,12 +25,20 @@ export class DashboardComponent implements OnInit {
   public menuItems: object;
   allocComponent: any = HomeComponent;
   componentName: string = 'Dashboard';
+  protected fname: string;
   
   constructor(private auth: AuthService, private dialog: MatDialog) { 
     this.menuItems = ROUTES;
   }
 
   ngOnInit(): void {
+    firebase.auth().onAuthStateChanged((user) => {
+      if(user) {
+        this.fname = user.displayName.split(' ')[0];
+      } else {
+        console.log('No one is logged in.');
+      }
+    })
   }
 
   assignComponent(componentPath, componentTitle) {
