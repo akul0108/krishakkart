@@ -57,7 +57,7 @@ export class customerProfileDialog {
   protected picURL;
   protected phone;
 
-  constructor(private auth: AuthService) {}
+  constructor() {}
 
   ngOnInit(): void {
     firebase.auth().onAuthStateChanged((user) => {

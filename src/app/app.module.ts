@@ -37,6 +37,8 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatRadioModule} from '@angular/material/radio';
 
 //Components
 import { RegistrationComponent, TermsOfUseDialog} from './registration/registration.component';
@@ -66,8 +68,12 @@ import { FaqsComponent } from './android/Seller/faqs/faqs.component';
 import { CustDashboardComponent, customerProfileDialog } from './android/Customer/cust-dashboard/cust-dashboard.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
-import { from } from 'rxjs';
-
+import { CustProfileComponent } from './android/Customer/cust-profile/cust-profile.component';
+import { CustAccountComponent } from './android/Customer/cust-account/cust-account.component';
+import { CustOrdersComponent } from './android/Customer/cust-orders/cust-orders.component';
+import { CustPaymentsComponent } from './android/Customer/cust-payments/cust-payments.component';
+import { CustFeedbackComponent } from './android/Customer/cust-feedback/cust-feedback.component';
+import { CustFaqsComponent } from './android/Customer/cust-faqs/cust-faqs.component';
 @NgModule({
   declarations: [
     CompareValidatorDirective,
@@ -114,6 +120,12 @@ import { from } from 'rxjs';
     CustDashboardComponent,
     ForgotPasswordComponent,
     PasswordResetComponent,
+    CustProfileComponent,
+    CustAccountComponent,
+    CustOrdersComponent,
+    CustPaymentsComponent,
+    CustFeedbackComponent,
+    CustFaqsComponent,
     
   ],
   imports: [
@@ -141,6 +153,8 @@ import { from } from 'rxjs';
     MatSelectModule,
     MatTooltipModule,
     MatTabsModule,
+    MatExpansionModule,
+    MatRadioModule,
     
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     // AngularFireModule.initializeApp(environment.firebaseConfig),

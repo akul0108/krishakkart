@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row py-5">
+    <div class="col-lg-4 col-md-5 col-sm-12">
+      <mat-card class="mb-3">
+        <div class="row mx-auto">
+          <div class="col-lg-4 col-md-4 col-sm-4 align-self-center" id="left">
+            <img class="rounded-circle w-100" [src]="picURL" />
+            <mat-icon *ngIf="phone" class="dialog-profile-icon">account_circle</mat-icon>
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-8 mt-auto text-center" id="right">
+            <h5>{{name | titlecase}}</h5>
+            <p>{{email | lowercase}}</p>
+            <h5>{{phone}}</h5>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card>
+        <mat-nav-list>
+          <mat-list-item *ngFor="let menuItem of menuItems" routerLinkActive #rla="routerLinkActive"
+          [ngClass]="rla.isActive? (menuItem.children === null? 'active' : '') : ''"
+          [routerLinkActiveOptions]="{exact: true}" [style.color]="rla.isActive? activeFontColor : normalFontColor"
+          [style.background-color]="rla.isActive? color : ''" (click)=titleName([menuItem.title])>
+            <mat-icon mat-list-icon>{{menuItem.icon}}</mat-icon>
+            <a matLine [routerLink]="[menuItem.path]">
+              {{menuItem.title | uppercase}}
+            </a>
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-card>
+    </div>
+    <div class="col-lg-8 col-md-7 col-sm-12">
+      <mat-card class="mb-3">
+          <h6>{{title | titlecase}}</h6>
+      </mat-card>
+      <mat-card>
+        <router-outlet></router-outlet>
+      </mat-card>
+    </div>
+  </div>
+</div>

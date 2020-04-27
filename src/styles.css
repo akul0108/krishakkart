@@ -17,6 +17,12 @@ body {
   outline-color: transparent;
 }
 
+.mat-raised-button.mat-seagreen {
+  background-color: #009f4d;
+  color: white;
+  outline-color: transparent;
+}
+
 .mat-raised-button.mat-primary {
   outline-color: transparent;
 }

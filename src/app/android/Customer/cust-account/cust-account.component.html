@@ -1,0 +1,95 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Profile Information
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-divider></mat-divider>
+
+    <form [formGroup]='basicDetailFormGroup' class="mt-4">
+      <h5 class="ml-2">Name</h5>
+      <div class="text-center">
+        <mat-form-field appearance="outline" class="mr-5">
+          <mat-label>First Name</mat-label>
+          <input matInput type="text" placeholder="First Name" formControlName="fname">
+          <mat-icon matSuffix>person</mat-icon>
+          <mat-error *ngIf="basicDetailFormGroup?.controls?.fname?.hasError('required')">First Name is
+            <strong>required.</strong></mat-error>
+          <mat-error *ngIf="basicDetailFormGroup?.controls?.fname?.hasError('pattern')">Please use
+            <strong>characters.</strong></mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput type="text" placeholder="Last Name" formControlName="lname">
+          <mat-icon matSuffix>person</mat-icon>
+          <mat-error *ngIf="basicDetailFormGroup?.controls?.lname?.hasError('required')">Last Name is
+            <strong>required.</strong></mat-error>
+          <mat-error *ngIf="basicDetailFormGroup?.controls?.lname?.hasError('pattern')">Please use
+            <strong>characters.</strong></mat-error>
+        </mat-form-field>
+      </div>
+
+      <h5 class="ml-2">Gender</h5>
+      <div class="ml-2">
+        <mat-radio-group>
+          <mat-radio-button value='male'>Male</mat-radio-button>
+          <mat-radio-button value='female'>Female</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <h5 class="ml-2 mt-3">Email</h5>
+      <mat-form-field appearance="outline" class="w-50 ml-2">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" placeholder="Enter Your Email Address" formControlName="email" inputmode="email">
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error *ngIf="basicDetailFormGroup?.controls?.email?.hasError('required')">Email is
+          <strong>required.</strong>
+        </mat-error>
+        <mat-error *ngIf="basicDetailFormGroup?.controls?.email?.hasError('email')">Please Enter a valid email address
+        </mat-error>
+      </mat-form-field>
+
+      <h5 class="ml-2">Mobile Number</h5>
+      <mat-form-field appearance="outline" class="w-50 ml-2">
+        <mat-label>Mobile Number</mat-label>
+        <input matInput type="tel" placeholder="Enter Your Mobile Number" formControlName="mobile" inputmode="numeric">
+        <mat-icon matSuffix>phone_enabled</mat-icon>
+        <mat-error *ngIf="basicDetailFormGroup?.controls?.mobile?.hasError('required')">Contact Number is
+          <strong>required.</strong></mat-error>
+        <mat-error
+          *ngIf="basicDetailFormGroup?.controls?.mobile?.hasError('minlength') || basicDetailFormGroup?.controls?.mobile?.hasError('maxlength')">
+          Please enter 10 digits.</mat-error>
+        <mat-error *ngIf="basicDetailFormGroup?.controls?.mobile?.hasError('pattern')">Wrong contact number.</mat-error>
+      </mat-form-field>
+
+      <mat-card-actions align="end">
+        <button mat-raised-button color="seagreen">Save</button>
+      </mat-card-actions>
+    </form>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Manage Addresses
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-divider></mat-divider>
+    <mat-card-actions class="mt-4">
+      <button mat-stroked-button mat-dialog-close class="rounded-corner">
+          <mat-icon>add</mat-icon> New Address</button>
+    </mat-card-actions>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        PAN Card Information
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+</mat-accordion>
