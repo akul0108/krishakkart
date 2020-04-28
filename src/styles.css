@@ -31,6 +31,10 @@ body {
   outline-color: transparent;
 }
 
+.mat-raised-button{
+  outline: 0 !important;
+}
+
 .mat-fab.mat-seagreen {
   background-color: #009f4d;
   color: white;

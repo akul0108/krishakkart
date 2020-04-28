@@ -9,6 +9,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class CustAccountComponent implements OnInit {
 
   basicDetailFormGroup: FormGroup;
+  addressFormGroup: FormGroup;
+
+  //Flag
+  protected addressForm: boolean = true;
 
   constructor(private _formBuilder: FormBuilder) { }
 
@@ -18,6 +22,16 @@ export class CustAccountComponent implements OnInit {
       lname: ['',[Validators.required, Validators.pattern('[a-zA-z]+')]],
       email: ['',[Validators.required, Validators.email]],
       mobile: ['',[Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('[6-9][0-9]*')]],
+    });
+    this.addressFormGroup = this._formBuilder.group({
+      name: ['',[Validators.required, Validators.pattern('[a-zA-Z ]+')]],
+      mobile: ['',[Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('[6-9][0-9]*')]],
+      pincode: ['',[Validators.required, Validators.minLength(6), Validators.maxLength(6), Validators.pattern('[0-9]*')]],
+      locality: ['',[Validators.required, Validators.pattern('[a-zA-Z ]+')]],
+      address: ['',[Validators.required]],
+      city: ['',[Validators.required, Validators.pattern('[a-zA-Z ]+')]],
+      state: ['',[Validators.required, Validators.pattern('[a-zA-Z ]+')]],
+      alt_mobile: ['',[Validators.minLength(10), Validators.maxLength(10), Validators.pattern('[6-9][0-9]*')]],
     })
   }
 

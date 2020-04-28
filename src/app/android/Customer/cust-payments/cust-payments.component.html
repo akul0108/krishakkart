@@ -1,1 +1,63 @@
-<p>cust-payments works!</p>
+<div class="ml-2">
+  <h5>Manage Saved Cards</h5>
+  <mat-card-actions class="mt-4 ml-1" *ngIf="cardDetailsForm">
+    <button mat-stroked-button class="rounded-corner" (click)="cardDetailsForm = !cardDetailsForm">
+      <mat-icon>add</mat-icon> New Address
+    </button>
+  </mat-card-actions>
+
+  <form [formGroup]='cardFormGroup' class="mt-4" *ngIf="!cardDetailsForm">
+    <h6 class="ml-3">Card Details</h6>
+    <div class="text-center">
+      <mat-form-field appearance="outline" class="mr-5">
+        <mat-label>Card Number</mat-label>
+        <input matInput type="tel" placeholder="Enter Your Card Number" formControlName="card_num" inputmode="numeric">
+        <mat-icon matSuffix>credit_card</mat-icon>
+        <mat-error *ngIf="cardFormGroup?.controls?.card_num?.hasError('required')">Contact Number is
+          <strong>required.</strong></mat-error>
+        <mat-error
+          *ngIf="cardFormGroup?.controls?.card_num?.hasError('minlength') || cardFormGroup?.controls?.card_num?.hasError('maxlength')">
+          Please enter 10 digits.</mat-error>
+        <mat-error *ngIf="cardFormGroup?.controls?.card_num?.hasError('pattern')">Wrong contact number.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="card_valid">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="cardFormGroup?.controls?.card_valid?.hasError('required')">Card Validity is
+            <strong>required.</strong></mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <h6 class="ml-3">Name</h6>
+    <div class="text-center">
+      <mat-form-field appearance="outline" class="mr-5">
+        <mat-label>Name on Card</mat-label>
+        <input matInput type="text" placeholder="Name" formControlName="name">
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-error *ngIf="cardFormGroup?.controls?.name?.hasError('required')">Name is
+          <strong>required.</strong></mat-error>
+        <mat-error *ngIf="cardFormGroup?.controls?.name?.hasError('pattern')">Please use
+          <strong>characters.</strong></mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Name this Card for future use</mat-label>
+        <input matInput type="text" placeholder="Name" formControlName="card_name">
+        <mat-icon matSuffix>credit_card</mat-icon>
+        <mat-error *ngIf="cardFormGroup?.controls?.card_name?.hasError('required')">Card Name is
+          <strong>required.</strong></mat-error>
+        <mat-error *ngIf="cardFormGroup?.controls?.card_name?.hasError('pattern')">Please use
+          <strong>characters.</strong></mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-card-actions align="end" class="mr-1">
+      <button mat-raised-button color="seagreen">Save</button>
+      <button mat-raised-button (click)="cardDetailsForm = !cardDetailsForm">Cancel</button>
+    </mat-card-actions>
+  </form>
+</div>

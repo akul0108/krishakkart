@@ -39,6 +39,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 //Components
 import { RegistrationComponent, TermsOfUseDialog} from './registration/registration.component';
@@ -155,6 +157,8 @@ import { CustFaqsComponent } from './android/Customer/cust-faqs/cust-faqs.compon
     MatTabsModule,
     MatExpansionModule,
     MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     // AngularFireModule.initializeApp(environment.firebaseConfig),

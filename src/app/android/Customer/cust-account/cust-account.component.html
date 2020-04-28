@@ -65,7 +65,7 @@
         <mat-error *ngIf="basicDetailFormGroup?.controls?.mobile?.hasError('pattern')">Wrong contact number.</mat-error>
       </mat-form-field>
 
-      <mat-card-actions align="end">
+      <mat-card-actions align="end" class="mr-2">
         <button mat-raised-button color="seagreen">Save</button>
       </mat-card-actions>
     </form>
@@ -79,17 +79,120 @@
     </mat-expansion-panel-header>
 
     <mat-divider></mat-divider>
-    <mat-card-actions class="mt-4">
-      <button mat-stroked-button mat-dialog-close class="rounded-corner">
-          <mat-icon>add</mat-icon> New Address</button>
+    <mat-card-actions class="mt-4" *ngIf="addressForm">
+      <button mat-stroked-button class="rounded-corner" (click)="addressForm = !addressForm">
+        <mat-icon>add</mat-icon> New Address
+      </button>
     </mat-card-actions>
-  </mat-expansion-panel>
 
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        PAN Card Information
-      </mat-panel-title>
-    </mat-expansion-panel-header>
+    <form [formGroup]="addressFormGroup" class="mt-4" *ngIf="!addressForm">
+      <div class="text-center">
+        <mat-form-field appearance="outline" class="mr-5">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" placeholder="Name" formControlName="name">
+          <mat-icon matSuffix>person</mat-icon>
+          <mat-error *ngIf="addressFormGroup?.controls?.name?.hasError('required')">Name is
+            <strong>required.</strong></mat-error>
+          <mat-error *ngIf="addressFormGroup?.controls?.name?.hasError('pattern')">Please use
+            <strong>characters.</strong></mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Mobile Number</mat-label>
+          <input matInput type="tel" placeholder="Enter Your Mobile Number" formControlName="mobile"
+            inputmode="numeric">
+          <mat-icon matSuffix>phone_enabled</mat-icon>
+          <mat-error *ngIf="addressFormGroup?.controls?.mobile?.hasError('required')">Contact Number is
+            <strong>required.</strong></mat-error>
+          <mat-error
+            *ngIf="addressFormGroup?.controls?.mobile?.hasError('minlength') || addressFormGroup?.controls?.mobile?.hasError('maxlength')">
+            Please enter 10 digits.</mat-error>
+          <mat-error *ngIf="addressFormGroup?.controls?.mobile?.hasError('pattern')">Wrong contact number.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="text-center">
+        <mat-form-field appearance="outline" class="mr-5">
+          <mat-label>Pincode</mat-label>
+          <input matInput type="tel" placeholder="Enter Pincode" formControlName="pincode" inputmode="numeric">
+          <mat-icon matSuffix>fiber_pin</mat-icon>
+          <mat-error *ngIf="addressFormGroup?.controls?.pincode?.hasError('required')">Pincode is
+            <strong>required.</strong></mat-error>
+          <mat-error
+            *ngIf="addressFormGroup?.controls?.pincode?.hasError('minlength') || addressFormGroup?.controls?.pincode?.hasError('maxlength')">
+            Please enter 6 digits.</mat-error>
+          <mat-error *ngIf="addressFormGroup?.controls?.pincode?.hasError('pattern')">Wrong Pincode number.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Locality</mat-label>
+          <input matInput type="text" placeholder="Locality" formControlName="locality">
+          <mat-icon matSuffix>place</mat-icon>
+          <mat-error *ngIf="addressFormGroup?.controls?.locality?.hasError('required')">Locality is
+            <strong>required.</strong></mat-error>
+          <mat-error *ngIf="addressFormGroup?.controls?.locality?.hasError('pattern')">Please use
+            <strong>characters.</strong></mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="text-center mx-2">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Address (Area and Street)</mat-label>
+          <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows='5' cdkAutosizeMaxRows='5' formControlName="address"
+            placeholder="Enter Your Address" #msg></textarea>
+          <mat-error *ngIf="addressFormGroup?.controls?.address?.hasError('required')">Address is
+            <strong>required.</strong></mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="text-center">
+        <mat-form-field appearance="outline" class="mr-5">
+          <mat-label>City/District/Town</mat-label>
+          <input matInput type="text" placeholder="City/District/Town" formControlName="city">
+          <mat-icon matSuffix>location_city</mat-icon>
+          <mat-error *ngIf="addressFormGroup?.controls?.city?.hasError('required')">City is
+            <strong>required.</strong></mat-error>
+          <mat-error *ngIf="addressFormGroup?.controls?.city?.hasError('pattern')">Please use
+            <strong>characters.</strong></mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>State</mat-label>
+          <input matInput type="text" placeholder="State" formControlName="state">
+          <mat-icon matSuffix>location_city</mat-icon>
+          <mat-error *ngIf="addressFormGroup?.controls?.state?.hasError('required')">State is
+            <strong>required.</strong></mat-error>
+          <mat-error *ngIf="addressFormGroup?.controls?.state?.hasError('pattern')">Please use
+            <strong>characters.</strong></mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="text-center">
+        <mat-form-field appearance="outline" class="mr-5">
+          <mat-label>Landmark (Optional)</mat-label>
+          <input matInput type="text" placeholder="Landmark">
+          <mat-icon matSuffix>emoji_flags</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Alternate Mobile Number (Optional)</mat-label>
+          <input matInput type="tel" placeholder="Enter Your Alternate Mobile Number" formControlName="alt_mobile"
+            inputmode="numeric">
+          <mat-icon matSuffix>phone_enabled</mat-icon>
+          <mat-error
+            *ngIf="addressFormGroup?.controls?.alt_mobile?.hasError('minlength') || addressFormGroup?.controls?.alt_mobile?.hasError('maxlength')">
+            Please enter 10 digits.</mat-error>
+          <mat-error *ngIf="addressFormGroup?.controls?.alt_mobile?.hasError('pattern')">Wrong contact number.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <mat-card-actions align="end" class="mr-1">
+        <button mat-raised-button color="seagreen">Save</button>
+        <button mat-raised-button (click)="addressForm = !addressForm">Cancel</button>
+      </mat-card-actions>
+    </form>
   </mat-expansion-panel>
 </mat-accordion>
