@@ -19,6 +19,9 @@ export class CustProfileComponent implements OnInit {
   public color: string;
   public title: string = 'account setting';
 
+  //flag
+  protected profileView: boolean;
+
   constructor() { 
     this.menuItems = CUST_ROUTES;
     this.activeFontColor = 'rgba(255, 255, 255)';
@@ -41,5 +44,14 @@ export class CustProfileComponent implements OnInit {
 
   titleName(titleName) {
     this.title = titleName[0];
+  }
+
+  isSmallScreen() {
+    const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    if (width < 500) {
+        return false;
+    } else {
+        return true;
+    }
   }
 }

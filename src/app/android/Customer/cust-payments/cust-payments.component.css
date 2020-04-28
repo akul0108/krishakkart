@@ -2,6 +2,28 @@
     border-radius: 20px;
 }
 
-.mat-form-field {
+/*Media Query for Laptop and Above*/
+  
+@media (min-width: 992px) {
+  .mat-form-field {
     width: 45%;
+  }
+
+  .card_save_btn {
+    margin-right: 0.5%;
+  }
+}
+
+/* Media Query for Tablets and less */
+
+@media (max-width: 991.98px) {
+  .mat-form-field {
+    width: 100%;
+  }
+}
+
+/*Media Query for Phones/ Mobiles and less*/
+
+@media (max-width: 767.98px) {
+ 
 }

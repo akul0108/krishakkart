@@ -41,33 +41,39 @@
       </div>
 
       <h5 class="ml-2 mt-3">Email</h5>
-      <mat-form-field appearance="outline" class="w-50 ml-2">
-        <mat-label>Email</mat-label>
-        <input matInput type="text" placeholder="Enter Your Email Address" formControlName="email" inputmode="email">
-        <mat-icon matSuffix>email</mat-icon>
-        <mat-error *ngIf="basicDetailFormGroup?.controls?.email?.hasError('required')">Email is
-          <strong>required.</strong>
-        </mat-error>
-        <mat-error *ngIf="basicDetailFormGroup?.controls?.email?.hasError('email')">Please Enter a valid email address
-        </mat-error>
-      </mat-form-field>
+      <div class="ml-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="text" placeholder="Enter Your Email Address" formControlName="email" inputmode="email">
+          <mat-icon matSuffix>email</mat-icon>
+          <mat-error *ngIf="basicDetailFormGroup?.controls?.email?.hasError('required')">Email is
+            <strong>required.</strong>
+          </mat-error>
+          <mat-error *ngIf="basicDetailFormGroup?.controls?.email?.hasError('email')">Please Enter a valid email address
+          </mat-error>
+        </mat-form-field>
+      </div>
 
       <h5 class="ml-2">Mobile Number</h5>
-      <mat-form-field appearance="outline" class="w-50 ml-2">
-        <mat-label>Mobile Number</mat-label>
-        <input matInput type="tel" placeholder="Enter Your Mobile Number" formControlName="mobile" inputmode="numeric">
-        <mat-icon matSuffix>phone_enabled</mat-icon>
-        <mat-error *ngIf="basicDetailFormGroup?.controls?.mobile?.hasError('required')">Contact Number is
-          <strong>required.</strong></mat-error>
-        <mat-error
-          *ngIf="basicDetailFormGroup?.controls?.mobile?.hasError('minlength') || basicDetailFormGroup?.controls?.mobile?.hasError('maxlength')">
-          Please enter 10 digits.</mat-error>
-        <mat-error *ngIf="basicDetailFormGroup?.controls?.mobile?.hasError('pattern')">Wrong contact number.</mat-error>
-      </mat-form-field>
-
-      <mat-card-actions align="end" class="mr-2">
-        <button mat-raised-button color="seagreen">Save</button>
-      </mat-card-actions>
+      <div class="ml-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Mobile Number</mat-label>
+          <input matInput type="tel" placeholder="Enter Your Mobile Number" formControlName="mobile" inputmode="numeric">
+          <mat-icon matSuffix>phone_enabled</mat-icon>
+          <mat-error *ngIf="basicDetailFormGroup?.controls?.mobile?.hasError('required')">Contact Number is
+            <strong>required.</strong></mat-error>
+          <mat-error
+            *ngIf="basicDetailFormGroup?.controls?.mobile?.hasError('minlength') || basicDetailFormGroup?.controls?.mobile?.hasError('maxlength')">
+            Please enter 10 digits.</mat-error>
+          <mat-error *ngIf="basicDetailFormGroup?.controls?.mobile?.hasError('pattern')">Wrong contact number.</mat-error>
+        </mat-form-field>
+      </div>
+      
+      <div class="profile_save_btn">
+        <mat-card-actions align="end">
+          <button mat-raised-button color="seagreen">Save</button>
+        </mat-card-actions>
+      </div>
     </form>
   </mat-expansion-panel>
 
@@ -137,8 +143,8 @@
         </mat-form-field>
       </div>
 
-      <div class="text-center mx-2">
-        <mat-form-field appearance="outline" class="w-100">
+      <div class="text-center">
+        <mat-form-field appearance="outline" class="area-textarea">
           <mat-label>Address (Area and Street)</mat-label>
           <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows='5' cdkAutosizeMaxRows='5' formControlName="address"
             placeholder="Enter Your Address" #msg></textarea>
@@ -189,10 +195,12 @@
         </mat-form-field>
       </div>
 
-      <mat-card-actions align="end" class="mr-1">
-        <button mat-raised-button color="seagreen">Save</button>
-        <button mat-raised-button (click)="addressForm = !addressForm">Cancel</button>
-      </mat-card-actions>
+      <div>
+        <mat-card-actions align="end" class="add_save_btn">
+          <button mat-raised-button color="seagreen">Save</button>
+          <button mat-raised-button (click)="addressForm = !addressForm">Cancel</button>
+        </mat-card-actions>
+      </div>
     </form>
   </mat-expansion-panel>
 </mat-accordion>

@@ -2,10 +2,6 @@
     border-radius: 20px;
 }
 
-.mat-form-field {
-    width: 45%;
-}
-
 .mat-radio-button ~ .mat-radio-button {
   margin-left: 16px;
 }
@@ -21,4 +17,42 @@
 
 ::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
     background-color:#009f4d;
+}
+
+/*Media Query for Laptop and Above*/
+  
+@media (min-width: 992px) {
+  .mat-form-field {
+    width: 45%;
+  }
+
+  .add_save_btn{
+    margin-right: 3%;
+  }
+
+  .area-textarea {
+   width: 97.5%;
+  }
+
+  .add_save_btn {
+    margin-right: 0.5%;
+  }
+}
+
+/* Media Query for Tablets and less */
+
+@media (max-width: 991.98px) {
+  .mat-form-field {
+    width: 100%;
+  }
+
+  .profile_save_btn{
+    margin-right: 3%;
+  }
+}
+
+/*Media Query for Phones/ Mobiles and less*/
+
+@media (max-width: 767.98px) {
+ 
 }

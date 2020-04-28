@@ -1,5 +1,17 @@
+.rounded-corner {
+    border-radius: 20px;
+}
+
 .mat-list-item {
     border-radius: 5px;
+}
+
+.mat-button.mat-textseagreen {
+    color:  #009f4d;
+}
+
+.view_btn {
+    margin-left: 70%;
 }
 
 /*Media Query for Laptop and Above*/
@@ -25,5 +37,14 @@
     #right {
         width: 65%;
         display: inline-block;
+    }
+
+    .parent {
+        white-space: nowrap;
+    }
+    
+    .child-right {
+        display:inline-block;
+        white-space: normal;
     }
 }
