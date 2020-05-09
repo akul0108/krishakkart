@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-password-reset',
@@ -10,8 +9,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class PasswordResetComponent implements OnInit {
 
+  //FormGroup
   pwdResetFormGroup: FormGroup
 
+  //Flags
+  cphide: boolean
+  phide: boolean
+  currphide: boolean
+  
   constructor(private _formBuilder: FormBuilder, private auth: AuthService) { }
 
   ngOnInit(): void {

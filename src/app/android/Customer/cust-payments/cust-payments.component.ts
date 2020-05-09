@@ -11,7 +11,7 @@ export class CustPaymentsComponent implements OnInit {
   cardFormGroup: FormGroup;
 
   //Flag
-  protected cardDetailsForm: boolean = true;
+  cardDetailsForm: boolean = true;
 
   constructor(private _formBuilder: FormBuilder) { }
 

@@ -10,6 +10,20 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { CompareValidatorDirective } from './services/compare-validator.directive';
 
+// Import Angular Fusion Charts
+import { FusionChartsModule } from 'angular-fusioncharts';
+
+// Load FusionCharts
+import * as FusionCharts from 'fusioncharts';
+// Load Time Series Charts module
+import * as TimeSeriesCharts from 'fusioncharts/fusioncharts.timeseries';
+import * as Charts from 'fusioncharts/fusioncharts.charts';
+// Load themes
+import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
+
+// Add dependencies to FusionChartsModule
+FusionChartsModule.fcRoot(FusionCharts, TimeSeriesCharts, Charts, FusionTheme)
+
 //Guards
 import { AuthGuardGuard } from './Guards/auth-guard.guard';
 import { LoginPageGuardGuard } from './Guards/login-page-guard.guard';
@@ -138,7 +152,8 @@ import { CustFaqsComponent } from './android/Customer/cust-faqs/cust-faqs.compon
     ReactiveFormsModule,
     NgxPageScrollModule,
     HttpClientModule,
-    
+    FusionChartsModule,
+
     //Material Components
     MatCardModule,
     MatButtonModule,

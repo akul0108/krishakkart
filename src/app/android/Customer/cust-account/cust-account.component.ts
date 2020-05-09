@@ -12,7 +12,7 @@ export class CustAccountComponent implements OnInit {
   addressFormGroup: FormGroup;
 
   //Flag
-  protected addressForm: boolean = true;
+  addressForm: boolean = true;
 
   constructor(private _formBuilder: FormBuilder) { }
 

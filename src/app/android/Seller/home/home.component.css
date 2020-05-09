@@ -1,0 +1,35 @@
+.success {
+    background: green;
+    color: white;
+}
+
+.pending {
+    background-color: #ffbf00 ;
+    color: white;
+}
+
+.processing {
+    background-color: #008080;
+    color: whitesmoke;
+}
+
+.cancelled {
+    background-color: #df143d;
+    color: white;
+}
+
+.vertical_height {
+    height: 90.3%;
+}
+
+/*Media Query for Laptop and Above*/
+  
+@media (min-width: 992px) {}
+
+/* Media Query for Tablets and less */
+  
+@media (max-width: 991.98px) {}
+
+/*Media Query for Phones/ Mobiles and less*/
+  
+@media (max-width: 767.98px) {}

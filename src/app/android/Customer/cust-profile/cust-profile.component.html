@@ -7,10 +7,14 @@
             <img class="rounded-circle w-100" [src]="picURL" />
             <mat-icon *ngIf="phone" class="dialog-profile-icon">account_circle</mat-icon>
           </div>
-          <div class="col-lg-8 col-md-8 col-sm-8 mt-auto text-center" id="right">
-            <h5>{{name | titlecase}}</h5>
-            <p>{{email | lowercase}}</p>
-            <h5>{{phone}}</h5>
+          <div class="col-lg-8 col-md-8 col-sm-8 text-center align-self-center" id="right">
+            <div class="mt-3">
+              <h5>{{name | titlecase}}</h5>
+              <p>{{email | lowercase}}</p>
+            </div>
+            <div class="phone_no">
+              <h5>{{phone}}</h5>
+            </div>
           </div>
         </div>
       </mat-card>

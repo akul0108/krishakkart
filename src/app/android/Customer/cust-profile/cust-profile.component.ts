@@ -9,10 +9,10 @@ import { CUST_ROUTES } from './sidebar-routes.config';
 })
 export class CustProfileComponent implements OnInit {
 
-  protected name: string;
-  protected email: string;
-  protected picURL;
-  protected phone;
+  public name: string;
+  public email: string;
+  public picURL;
+  public phone;
   public menuItems: object;
   public activeFontColor: string;
   public normalFontColor: string;
@@ -20,7 +20,7 @@ export class CustProfileComponent implements OnInit {
   public title: string = 'account setting';
 
   //flag
-  protected profileView: boolean;
+  profileView: boolean;
 
   constructor() { 
     this.menuItems = CUST_ROUTES;

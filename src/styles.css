@@ -10,6 +10,10 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+svg > g[class^="raphael-group-"] > text{
+  display: none;
+}
+
 /* Custom Material CSS*/
 .mat-raised-button.mat-darkslateblue {
   background-color: darkslateblue;

@@ -1,1 +1,79 @@
-<p>home works!</p>
+<div class="row vertical_height">
+  <div class="col-lg-6">
+    <div class="my-3">
+      <h5>Income</h5>
+      <div class="my-3">
+        <fusioncharts [type]="timeSeriesType" [width]="width" [height]="height" [dataSource]="incomeDataSource"></fusioncharts>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 my-1">
+          <mat-card>
+            <div class="row">
+              <div class="col-9">Today's Income</div>
+              <div class="col-3">0</div>
+            </div>
+          </mat-card>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 my-1">
+          <mat-card>
+            <div class="row">
+              <div class="col-9">Net Income</div>
+              <div class="col-3">0</div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <mat-divider [vertical]="true"></mat-divider> -->
+  <div class="col-lg-6">
+    <div class="my-3">
+      <h5>Bookings</h5>
+      <div class="my-3">
+        <fusioncharts [type]="splineType" [width]="width" [height]="height" [dataFormat]="json" [dataSource]="bookingDataSource"></fusioncharts>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 my-1">
+          <mat-card>
+            <div class="row">
+              <div class="col-9">Today's Bookings</div>
+              <div class="col-3">0</div>
+            </div>
+          </mat-card>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 my-1">
+          <mat-card class="pending">
+            <div class="row">
+              <div class="col-9">Pending</div>
+              <div class="col-3">0</div>
+            </div>
+          </mat-card>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 my-1">
+          <mat-card class="processing">
+            <div class="row">
+              <div class="col-9">Processing</div>
+              <div class="col-3">0</div>
+            </div>
+          </mat-card>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 my-1">
+          <mat-card class="success">
+            <div class="row">
+              <div class="col-9">Completed</div>
+              <div class="col-3">0</div>
+            </div>
+          </mat-card>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 my-1">
+          <mat-card class="cancelled">
+            <div class="row">
+              <div class="col-9">Cancelled</div>
+              <div class="col-3">0</div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -14,10 +14,10 @@ export class CustDashboardComponent implements OnInit {
 
   title = "Krishakkart";
   hide : boolean = true;
-  protected providerId:string = 'phone';
-  protected phone;
-  protected fname;
-  protected picURL;
+  public providerId:string = 'phone';
+  public phone;
+  public fname;
+  public picURL;
   
   ngOnInit(): void {
     firebase.auth().onAuthStateChanged((user) => {
@@ -52,12 +52,12 @@ export class CustDashboardComponent implements OnInit {
 })
 export class customerProfileDialog {
 
-  protected name: string;
-  protected email: string;
-  protected picURL;
-  protected phone;
+  public name: string;
+  public email: string;
+  public picURL;
+  public phone;
 
-  constructor() {}
+  constructor(private auth: AuthService) {}
 
   ngOnInit(): void {
     firebase.auth().onAuthStateChanged((user) => {
@@ -70,5 +70,9 @@ export class customerProfileDialog {
         console.log('No one is logged in.');
       }
     })
+  }
+
+  logout() {
+    this.auth.logout();
   }
 }

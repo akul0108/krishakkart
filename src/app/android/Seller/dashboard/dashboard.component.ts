@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
   public menuItems: object;
   allocComponent: any = HomeComponent;
   componentName: string = 'Dashboard';
-  protected fname: string;
+  public fname: string;
   
   constructor(private auth: AuthService, private dialog: MatDialog) { 
     this.menuItems = ROUTES;
@@ -117,8 +117,8 @@ export class DashboardComponent implements OnInit {
 })
 export class profileDialog {
 
-  protected name: string;
-  protected email: string;
+  public name: string;
+  public email: string;
 
   constructor(private auth: AuthService) {}
 
@@ -131,5 +131,9 @@ export class profileDialog {
         console.log('No one is logged in.');
       }
     })
+  }
+
+  logout() {
+    this.auth.logout();
   }
 }

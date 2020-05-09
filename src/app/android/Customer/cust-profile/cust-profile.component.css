@@ -14,16 +14,25 @@
     margin-left: 70%;
 }
 
+.phone_no{
+    margin-top: -10px;
+}
 /*Media Query for Laptop and Above*/
   
 @media (min-width: 992px) {
-    
+    .dialog-profile-icon {
+        height: 50px;
+        width: 50px;
+        font-size: 50px;
+    }   
 }
   
 /* Media Query for Tablets and less */
   
 @media (max-width: 991.98px) {
-   
+    .dialog-profile-icon {
+        font-size: 50px;
+    }
 }
   
 /*Media Query for Phones/ Mobiles and less*/
@@ -46,5 +55,11 @@
     .child-right {
         display:inline-block;
         white-space: normal;
+    }
+
+    .dialog-profile-icon {
+        height: 50px;
+        width: 50px;
+        font-size: 50px;
     }
 }
