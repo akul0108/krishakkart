@@ -1,7 +1,7 @@
 <mat-sidenav-container class="mat-container" autosize>
     <mat-sidenav #sidenav [mode]="isLargeScreen() ? 'side' : 'over'" [opened]="isLargeScreen()">
       <div class="logo">
-        <img src="../../../assets/logo/kkheaderlogo.png" alt="logo" width="60%" />
+        <img src="../../../assets/logo/kkheaderlogo.png" alt="logo" width="70%" />
       </div>
       <mat-nav-list>
         <mat-divider></mat-divider>
@@ -20,7 +20,7 @@
             <button mat-button color="seagreen" (click)="sidenav.toggle()">
               <mat-icon>menu</mat-icon>
             </button>
-            <h1 class="pl-2">{{componentName}}</h1>
+            <h4 class="pl-2">{{componentName}}</h4>
             <span class="spacer"></span>
             <button mat-button (click)="profileDialog()">
               Hi, {{fname | titlecase}}

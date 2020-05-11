@@ -1,10 +1,8 @@
-<button mat-raised-button (click)="openBottomSheet()">
-      <mat-icon>add_photo_alternate</mat-icon>
-      <p>Upload Image</p>
-</button>
-
 <form [formGroup]="message_send">
-  <div class="row">
+  <file-pond #sellerPic [options]="pondOptions" [files]="pondFiles" (oninit)="pondHandleInit()"
+    (onaddfile)="pondHandleAddFile($event)" class="my-3">
+  </file-pond>
+  <div class="row my-2 mb-3">
     <div class="col-md-4">
       <mat-form-field class="w-100">
         <mat-label>Type of User</mat-label>
@@ -84,7 +82,7 @@
           #email>
       </mat-form-field>
 
-      <button mat-raised-button class="w-100 mt-2" color="success">
+      <button mat-raised-button class="w-100 mt-2" color="seagreen">
         <i class="fa fa-paper-plane mr-2"></i>Send</button>
     </div>
   </div>

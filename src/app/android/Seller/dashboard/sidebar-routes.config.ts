@@ -1,7 +1,7 @@
 export const ROUTES = [
     { path: 'home', title: 'Dashboard', icon: 'dashboard', children: null },
     { path: 'profile', title: 'Update Profile', icon: 'person', children: null },
-    { path: 'hiring', title: 'Implements and Hiring Details', icon: 'eco', children: null },
+    { path: 'hiring', title: 'Implements Details', icon: 'eco', children: null },
     // { path: 'sell', title: 'Implements for Sell', icon: 'receipt', children: null },
     // { path: 'purchase', title: 'Implements for Purchase', icon: 'add_shopping_cart', children: null },
     { path: 'bookReceive', title: 'Booking Received', icon: 'book', children: null },

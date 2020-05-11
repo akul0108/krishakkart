@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 
@@ -22,20 +22,24 @@ export class ProfileUpdateComponent implements OnInit {
     })
   }
 
-  openBottomSheet(): void {
-    this._bottomSheet.open(BottomSheet);
+  
+  @ViewChild('sellerPic') sellerPic: any;
+
+  pondOptions = {
+    class: 'my-filepond',
+    multiple: false,
+    labelIdle: 'Drop files here or Browse',
+    acceptedFileTypes: 'image/*',
+    // allowImagePreview: true,
   }
-}
 
-@Component({
-  selector: 'bottom-sheet',
-  templateUrl: 'bottom-sheet.html',
-})
-export class BottomSheet {
-  constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheet>) {}
+  pondFiles = [ ]
 
-  openLink(event: MouseEvent): void {
-    this._bottomSheetRef.dismiss();
-    event.preventDefault();
+  pondHandleInit() {
+    console.log('FilePond has initialised', this.sellerPic);
+  }
+
+  pondHandleAddFile(event: any) {
+    console.log('A file was added', event);
   }
 }

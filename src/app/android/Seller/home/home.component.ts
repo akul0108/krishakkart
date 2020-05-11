@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   splineType: string;
   width: string;
   height: string;
+  dataFormat: string = "json";
   constructor() {
     this.timeSeriesType = 'timeseries';
     this.splineType = 'msspline';

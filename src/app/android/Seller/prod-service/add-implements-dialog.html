@@ -1,0 +1,44 @@
+<h2 mat-dialog-title>Implement Details</h2>
+<mat-dialog-content>
+  <form [formGroup]="implementsForm">
+    <mat-form-field class="w-100">
+      <mat-label>Implements Name</mat-label>
+      <input matInput type="text" placeholder="Eg. Cultivator" formControlName="implementsName">
+      <mat-error *ngIf="implementsForm?.controls?.implementsName?.hasError('required')">Implements Name is
+        <strong>required.</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <mat-label>Specification (Size / Power / Capacity etc)</mat-label>
+      <input matInput type="text" placeholder="" formControlName="spec">
+      <mat-error *ngIf="implementsForm?.controls?.spec?.hasError('required')">Specification is
+        <strong>required.</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <mat-label>Hiring Cost (₹ / hour)</mat-label>
+      <input matInput type="text" inputmode="numeric" placeholder="Eg. 1000" formControlName="cost">
+      <mat-error *ngIf="implementsForm?.controls?.cost?.hasError('required')">Hiring Cost is <strong>required.</strong>
+      </mat-error>
+      <mat-error *ngIf="implementsForm?.controls?.cost?.hasError('pattern')">Please enter <strong>Numbers.</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <mat-label>Number of Machines</mat-label>
+      <input matInput type="text" inputmode="numeric" placeholder="Eg. 2" formControlName="machine">
+      <mat-error *ngIf="implementsForm?.controls?.machine?.hasError('required')">Number of Machines is
+        <strong>required.</strong>
+      </mat-error>
+      <mat-error *ngIf="implementsForm?.controls?.machine?.hasError('pattern')">Please enter <strong>Numbers.</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <file-pond #implementPics [options]="pondOptions" [files]="pondFiles" (oninit)="pondHandleInit()"
+      (onaddfile)="pondHandleAddFile($event)" class="my-3">
+    </file-pond>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button class="w-100 mt-2" color="seagreen">
+    <i class="fa fa-paper-plane mr-2"></i>Submit</button>
+</mat-dialog-actions>

@@ -24,6 +24,15 @@ import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 // Add dependencies to FusionChartsModule
 FusionChartsModule.fcRoot(FusionCharts, TimeSeriesCharts, Charts, FusionTheme)
 
+// Import file pond Module
+import { FilePondModule, registerPlugin } from 'ngx-filepond';
+
+// Import and register filepond plugins
+import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+// import 'filepond-plugin-image-preview/dist/FilePondPluginImagePreview.css';
+registerPlugin(FilePondPluginFileValidateType, FilePondPluginImagePreview);
+
 //Guards
 import { AuthGuardGuard } from './Guards/auth-guard.guard';
 import { LoginPageGuardGuard } from './Guards/login-page-guard.guard';
@@ -72,9 +81,9 @@ import { KkServicesComponent } from './website/kk-services/kk-services.component
 import { KkNetworkComponent } from './website/kk-network/kk-network.component';
 import { DashboardComponent, profileDialog } from './android/Seller/dashboard/dashboard.component';
 import { HomeComponent } from './android/Seller/home/home.component';
-import { ProfileUpdateComponent, BottomSheet } from './android/Seller/profile-update/profile-update.component';
+import { ProfileUpdateComponent } from './android/Seller/profile-update/profile-update.component';
 import { ContactComponent } from './android/Seller/contact/contact.component';
-import { ProdServiceComponent } from './android/Seller/prod-service/prod-service.component';
+import { ProdServiceComponent, addImplementsDialog } from './android/Seller/prod-service/prod-service.component';
 import { SellComponent } from './android/Seller/sell/sell.component';
 import { PurchaseComponent } from './android/Seller/purchase/purchase.component';
 import { BookingReceivedComponent } from './android/Seller/booking-received/booking-received.component';
@@ -103,13 +112,13 @@ import { CustFaqsComponent } from './android/Customer/cust-faqs/cust-faqs.compon
     TermsOfUseDialog,
     // BuyerLoginDialog,
     // BuyerRegDialog,
-    BottomSheet,
 
     //Customer Dialogs
     customerProfileDialog,
 
     //Seller Dialogs
     profileDialog,
+    addImplementsDialog,
 
     //Components
     KkFooterComponent,
@@ -152,7 +161,8 @@ import { CustFaqsComponent } from './android/Customer/cust-faqs/cust-faqs.compon
     ReactiveFormsModule,
     NgxPageScrollModule,
     HttpClientModule,
-    FusionChartsModule,
+    FusionChartsModule, // add fusion chart    
+    FilePondModule, // add filepond module
 
     //Material Components
     MatCardModule,
@@ -187,13 +197,14 @@ import { CustFaqsComponent } from './android/Customer/cust-faqs/cust-faqs.compon
     TermsOfUseDialog,
     // BuyerLoginDialog,
     // BuyerRegDialog,
-    BottomSheet,
+    
     //Customer Dialogs
     customerProfileDialog,
     
     //seller Dialogs
     profileDialog,
-
+    addImplementsDialog,
+    
     //Components
     HomeComponent,
     ProfileUpdateComponent,
