@@ -11,8 +11,10 @@ export class AppComponent {
   title = 'krishakkart';
 
   // update : boolean = false;
+  promptEvent: any;
 
   constructor(private swupdate: SwUpdate, private snackbar: MatSnackBar) {
+
     this.swupdate.available.subscribe( event => {
       const snack = this.snackbar.open('New Version Available', 'UPDATE', {
         duration: 120000,
@@ -22,10 +24,6 @@ export class AppComponent {
         .subscribe(() => {
           window.location.reload();
         });
-      
-      // setTimeout(() => {
-      //   snack.dismiss();
-      // }, 6000);
     });
   }
 }

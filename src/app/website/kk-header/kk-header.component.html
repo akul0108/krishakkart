@@ -2,14 +2,14 @@
   <header id="HomePage" class="animated delay-1s fadeInDown">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-xl-6 col-lg-6 col-sm-12 col-xs-12">
-          <div class="text-center my-2">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+          <div class="text-center my-1">
             <button mat-button class="text-white text-decoration-none">Contact Us : +91-8505937520</button>
           </div>
         </div>
-        <div class="col-xl-6 col-lg-6 col-sm-12 col-xs-12 my-1">
-          <div class="text-center">
-            <a class="mr-4"><img src="assets\logo\Google_play_store.png" width="120px;" height="auto"></a>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 my-auto">
+          <div class="text-center my-1">
+            <!-- <a class="mr-4"><img src="assets\logo\Google_play_store.png" width="120px;" height="auto"></a> -->
             <a href="https://www.facebook.com/Krishakkart-103547904365081/" class="mx-2"><i
                 class="fa fa-facebook-f text-white"></i></a>
             <a href="https://www.linkedin.com/pulse/agriculture-machinery-rental-basis-krishakkart-an-effort-pandey/"
@@ -28,7 +28,8 @@
       <img src="assets\logo\kkheaderlogo.png" class="navbar-brand" height="80px" />
 
       <div class="d-md-none d-sm-block ml-auto">
-        <button type="button" class="btn btn-link"><img class="animated tada slow infinite"
+        <button type="button" class="btn btn-link" (click)="a2hs()"><img
+            class="animated tada slow infinite"
             src="https://img.icons8.com/ios-glyphs/30/A9A9A9/medical-mobile-app-2.png" /></button>
         <button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target="#navbarText"
           aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,7 +69,7 @@
     </ul> -->
       </div>
       <div class="animated tada slow infinite d-lg-none d-md-block d-none">
-        <button type="button" class="btn btn-link">
+        <button type="button" class="btn btn-link" (click)="a2hs()">
           <img src="https://img.icons8.com/ios-glyphs/30/A9A9A9/medical-mobile-app-2.png" />
         </button>
       </div>

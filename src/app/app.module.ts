@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,6 +42,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 //Services
+import { WebServiceService } from './website/web-service.service';
 import { AuthService } from './services/auth.service';
 
 //Material APIs
@@ -99,6 +100,7 @@ import { CustOrdersComponent } from './android/Customer/cust-orders/cust-orders.
 import { CustPaymentsComponent } from './android/Customer/cust-payments/cust-payments.component';
 import { CustFeedbackComponent } from './android/Customer/cust-feedback/cust-feedback.component';
 import { CustFaqsComponent } from './android/Customer/cust-faqs/cust-faqs.component';
+
 @NgModule({
   declarations: [
     CompareValidatorDirective,
@@ -218,7 +220,15 @@ import { CustFaqsComponent } from './android/Customer/cust-faqs/cust-faqs.compon
     FaqsComponent,
   ],
   
-  providers: [AuthService, AuthGuardGuard, LoginPageGuardGuard],
+  providers: [
+    //Services
+    AuthService, 
+    WebServiceService,
+
+    //Guards
+    AuthGuardGuard, 
+    LoginPageGuardGuard,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
