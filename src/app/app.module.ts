@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { CompareValidatorDirective } from './services/compare-validator.directive';
@@ -44,6 +44,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 //Services
 import { WebServiceService } from './website/web-service.service';
 import { AuthService } from './services/auth.service';
+import { SellerService } from './services/seller.service';
 
 //Material APIs
 import {MatCardModule} from '@angular/material/card';
@@ -71,7 +72,7 @@ import { RegistrationComponent, TermsOfUseDialog} from './registration/registrat
 import { KkHeaderComponent } from './website/kk-header/kk-header.component';
 import { LoginComponent } from './login/login.component';
 import { KkFooterComponent } from './website/kk-footer/kk-footer.component';
-import { KkBannerComponent, /*BuyerLoginDialog, BuyerRegDialog */ } from './website/kk-banner/kk-banner.component';
+import { KkBannerComponent } from './website/kk-banner/kk-banner.component';
 import { KkProductsComponent } from './website/kk-products/kk-products.component';
 import { KkTestimonialsComponent } from './website/kk-testimonials/kk-testimonials.component';
 import { KkPageNotFoundComponent } from './website/kk-page-not-found/kk-page-not-found.component';
@@ -100,6 +101,9 @@ import { CustOrdersComponent } from './android/Customer/cust-orders/cust-orders.
 import { CustPaymentsComponent } from './android/Customer/cust-payments/cust-payments.component';
 import { CustFeedbackComponent } from './android/Customer/cust-feedback/cust-feedback.component';
 import { CustFaqsComponent } from './android/Customer/cust-faqs/cust-faqs.component';
+import { NeedProfileComponent } from './android/Seller/need-profile/need-profile.component';
+import { AuthInterceptor } from './services/auth.interceptor';
+import { TitleCasePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -112,9 +116,7 @@ import { CustFaqsComponent } from './android/Customer/cust-faqs/cust-faqs.compon
 
     //Dialogs
     TermsOfUseDialog,
-    // BuyerLoginDialog,
-    // BuyerRegDialog,
-
+  
     //Customer Dialogs
     customerProfileDialog,
 
@@ -153,6 +155,7 @@ import { CustFaqsComponent } from './android/Customer/cust-faqs/cust-faqs.compon
     CustPaymentsComponent,
     CustFeedbackComponent,
     CustFaqsComponent,
+    NeedProfileComponent,
     
   ],
   imports: [
@@ -197,8 +200,6 @@ import { CustFaqsComponent } from './android/Customer/cust-faqs/cust-faqs.compon
     
     //Dialogs
     TermsOfUseDialog,
-    // BuyerLoginDialog,
-    // BuyerRegDialog,
     
     //Customer Dialogs
     customerProfileDialog,
@@ -221,10 +222,16 @@ import { CustFaqsComponent } from './android/Customer/cust-faqs/cust-faqs.compon
   ],
   
   providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+
+    //Pipes
+    TitleCasePipe,
+    
     //Services
     AuthService, 
     WebServiceService,
-
+    SellerService,
+    
     //Guards
     AuthGuardGuard, 
     LoginPageGuardGuard,

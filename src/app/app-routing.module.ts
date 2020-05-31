@@ -5,7 +5,6 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { KkHeaderComponent } from './website/kk-header/kk-header.component';
 import { DashboardComponent } from './android/Seller/dashboard/dashboard.component';
-import { ProfileUpdateComponent } from './android/Seller/profile-update/profile-update.component';
 import { CustDashboardComponent } from './android/Customer/cust-dashboard/cust-dashboard.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AuthGuardGuard } from './Guards/auth-guard.guard';
@@ -17,6 +16,7 @@ import { CustPaymentsComponent } from './android/Customer/cust-payments/cust-pay
 import { CustFeedbackComponent } from './android/Customer/cust-feedback/cust-feedback.component';
 import { ContactComponent } from './android/Seller/contact/contact.component';
 import { CustFaqsComponent } from './android/Customer/cust-faqs/cust-faqs.component';
+import { NeedProfileComponent } from './android/Seller/need-profile/need-profile.component';
 
 const routes: Routes = [
   
@@ -53,8 +53,13 @@ const routes: Routes = [
       password: 'password'
     }
   },
-  { path:'sellerUpdateProfile', component: ProfileUpdateComponent },
-
+  { path:'sellerUpdateProfile', component: NeedProfileComponent,
+    canActivate:[AuthGuardGuard],
+    data: { 
+      password: 'password'
+    }
+  },
+  
   //Admin
   
 

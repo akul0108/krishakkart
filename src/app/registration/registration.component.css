@@ -12,7 +12,7 @@
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-  height: 100%;
+  min-height: 100%;
 }
 
 .text-darkslateblue {

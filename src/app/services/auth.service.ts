@@ -5,6 +5,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthService {
   // private userDetails: firebase.User = null;
   // authState: FirebaseAuth = null;
 
-  constructor(private router: Router, /*public afAuth: AngularFireAuth,*/ private snackbar: MatSnackBar) {
+  constructor(private router: Router, /*public afAuth: AngularFireAuth,*/ private snackbar: MatSnackBar, private http: HttpClient) {
     firebase.initializeApp(environment.firebaseConfig);
 
     
@@ -34,9 +35,24 @@ export class AuthService {
 
   currentUser: string;
 
+  uri = 'http://localhost:3000/seller';
+
+  // noAuthHeader = { headers: new HttpHeaders({ 'NoAuth': 'True'}) };
+
   /* User Registration*/
-   register(newUser) {
+  register(newUser) {
     return firebase.auth().createUserWithEmailAndPassword(newUser.email, newUser.password);
+  }
+
+  createSellerProfile(newUser, uid) {
+    const seller = {
+      uid : uid,
+      fname : newUser.fname,
+      lname : newUser.lname,
+      email : newUser.email,
+      contact : newUser.mobile
+    };
+    return this.http.post(`${this.uri}/createSeller`, seller);
   }
 
   // Sign in with Google

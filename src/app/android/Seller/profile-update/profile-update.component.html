@@ -1,89 +1,153 @@
-<form [formGroup]="message_send">
-  <file-pond #sellerPic [options]="pondOptions" [files]="pondFiles" (oninit)="pondHandleInit()"
-    (onaddfile)="pondHandleAddFile($event)" class="my-3">
+<form [formGroup]="profileForm">
+  <file-pond #sellerPic [options]="pondOptions" [files]="pondFiles" (change)="pondHandleAddFile($event)" class="my-3">
   </file-pond>
+
+  <div class="col-lg-4 col-md-4 col-sm-4 align-self-center" id="left">
+    <img class="rounded-circle w-100" [src]="profileURL" />
+  </div>
+  
   <div class="row my-2 mb-3">
     <div class="col-md-4">
       <mat-form-field class="w-100">
         <mat-label>Type of User</mat-label>
-        <input matInput type="text" inputmode="email" placeholder="Eg. example@email.com" formControlName="email"
-          #email>
+        <mat-select [(value)]="selectedTypeOfUser" formControlName="userType">
+          <mat-option *ngFor="let user of TypeOfUser" [value]="user.value">
+            {{user.viewValue}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="profileForm?.controls?.userType?.hasError('required')">User Type is <strong>required.</strong>
+        </mat-error>
+        <mat-error *ngIf="profileForm?.controls?.userType?.hasError('serverError')">
+          {{profileForm.get('userType').getError('serverError')}}
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="w-100">
         <mat-label>Company Name</mat-label>
-        <input matInput type="text" inputmode="email" placeholder="Eg. example@email.com" formControlName="email"
-          #email>
+        <input matInput type="text" placeholder="Eg. Krishakkart" formControlName="compName">
+        <mat-error *ngIf="profileForm?.controls?.compName?.hasError('required')">Company Name is <strong>required.</strong>
+        </mat-error>
+        <mat-error *ngIf="profileForm?.controls?.compName?.hasError('pattern')">Special Characters are <strong>not allowed.</strong>
+        </mat-error>
+        <mat-error *ngIf="profileForm?.controls?.compName?.hasError('serverError')">
+          {{profileForm.get('compName').getError('serverError')}}
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="w-100">
         <mat-label>Contact Person Name</mat-label>
-        <input matInput placeholder="Eg. Ram Kumar" formControlName="name" #name>
-        <mat-error *ngIf="message_send?.controls?.name?.hasError('required')"> Name is <strong>required.</strong>
-        </mat-error>
+        <input matInput placeholder="Eg. Ram Kumar" formControlName="user_name" readonly>
       </mat-form-field>
       <mat-form-field class="w-100">
         <mat-label>Email</mat-label>
         <input matInput type="text" inputmode="email" placeholder="Eg. example@email.com" formControlName="email"
-          #email>
+          readonly>
       </mat-form-field>
       <mat-form-field class="w-100">
         <mat-label>Mobile Number</mat-label>
-        <input matInput type="text" inputmode="numeric" placeholder="Eg. 8123185479" formControlName="contact" #contact>
+        <input matInput type="text" inputmode="numeric" placeholder="Eg. 8123185479" formControlName="contact" readonly>
       </mat-form-field>
     </div>
 
     <div class="col-md-4">
       <mat-form-field class="w-100">
         <mat-label>State</mat-label>
-        <input matInput type="text" inputmode="email" placeholder="Eg. example@email.com" formControlName="email"
-          #email>
+        <mat-select (selectionChange)="stateChanged(selectedState.value)" formControlName="state" #selectedState>
+          <mat-option *ngFor="let state of states" [value]="state.name">
+            {{state.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="profileForm?.controls?.state?.hasError('required')">State is <strong>required.</strong>
+        </mat-error>
+        <mat-error *ngIf="profileForm?.controls?.state?.hasError('serverError')">
+          {{profileForm.get('state').getError('serverError')}}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="w-100">
         <mat-label>District</mat-label>
-        <input matInput type="text" inputmode="email" placeholder="Eg. example@email.com" formControlName="email"
-          #email>
+        <mat-select ([value])="selectedCity" formControlName="district">
+          <mat-option *ngFor="let city of cities" [value]="city.name">
+            {{city.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="profileForm?.controls?.district?.hasError('required')">District is <strong>required.</strong>
+        </mat-error>
+        <mat-error *ngIf="profileForm?.controls?.district?.hasError('serverError')">
+          {{profileForm.get('district').getError('serverError')}}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="w-100">
         <mat-label>Sub District</mat-label>
-        <input matInput type="text" inputmode="email" placeholder="Eg. example@email.com" formControlName="email"
-          #email>
+        <input matInput type="text" inputmode="email" placeholder="" formControlName="subdistrict">
+        <mat-error *ngIf="profileForm?.controls?.subdistrict?.hasError('required')">Sub-District is <strong>required.</strong>
+        </mat-error>
+        <mat-error *ngIf="profileForm?.controls?.subdistrict?.hasError('pattern')"><strong>Only Characters.</strong>
+        </mat-error>
+        <mat-error *ngIf="profileForm?.controls?.subdistrict?.hasError('serverError')">
+          {{profileForm.get('subdistrict').getError('serverError')}}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="w-100">
         <mat-label>Block</mat-label>
-        <input matInput type="text" inputmode="email" placeholder="Eg. example@email.com" formControlName="email"
-          #email>
+        <input matInput type="text" inputmode="email" placeholder="Eg. Block-A" formControlName="block">
+        <mat-error *ngIf="profileForm?.controls?.block?.hasError('pattern')">Special Characters are <strong>not allowed.</strong>
+        </mat-error>
+        <mat-error *ngIf="profileForm?.controls?.block?.hasError('serverError')">
+          {{profileForm.get('block').getError('serverError')}}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="w-100">
         <mat-label>Village</mat-label>
-        <input matInput type="text" inputmode="email" placeholder="Eg. example@email.com" formControlName="email"
-          #email>
+        <input matInput type="text" inputmode="email" placeholder="Eg. Barhan" formControlName="vill">
+        <mat-error *ngIf="profileForm?.controls?.vill?.hasError('pattern')"><strong>Only Characters.</strong>
+        </mat-error>
+        <mat-error *ngIf="profileForm?.controls?.vill?.hasError('serverError')">
+          {{profileForm.get('vill').getError('serverError')}}
+        </mat-error>
       </mat-form-field>
     </div>
 
     <div class="col-md-4">
       <mat-form-field class="w-100">
         <mat-label>Address</mat-label>
-        <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows='5' cdkAutosizeMaxRows='5' formControlName="msg"
-          placeholder="Need Service / Product" #msg></textarea>
+        <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows='5' cdkAutosizeMaxRows='5' formControlName="address"
+          placeholder="Need Service / Product"></textarea>
+        <mat-error *ngIf="profileForm?.controls?.address?.hasError('required')">Address is <strong>required.</strong>
+        </mat-error>
+        <mat-error *ngIf="profileForm?.controls?.address?.hasError('serverError')">
+          {{profileForm.get('address').getError('serverError')}}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="w-100">
         <mat-label>Pincode</mat-label>
-        <input matInput type="text" inputmode="email" placeholder="Eg. example@email.com" formControlName="email"
-          #email>
+        <input matInput type="text" inputmode="email" placeholder="Eg. 282001" formControlName="pincode">
+        <mat-error *ngIf="profileForm?.controls?.pincode?.hasError('required')">Pincode is <strong>required.</strong>
+        </mat-error>
+        <mat-error *ngIf="profileForm?.controls?.pincode?.hasError('pattern')"><strong>Only Digits.</strong>
+        </mat-error>
+        <mat-error *ngIf="profileForm?.controls?.pincode?.hasError('minlength') || profileForm?.controls?.pincode?.hasError('maxlength')"><strong>Only 6 Digits longs.</strong>
+        </mat-error>
+        <mat-error *ngIf="profileForm?.controls?.pincode?.hasError('serverError')">
+          {{profileForm.get('pincode').getError('serverError')}}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="w-100">
-        <mat-label>GST Number</mat-label>
-        <input matInput type="text" inputmode="email" placeholder="Eg. example@email.com" formControlName="email"
-          #email>
+        <mat-label>GST / Pan Card Number</mat-label>
+        <input matInput type="text" inputmode="email" placeholder="Eg. example@email.com" formControlName="gst">
+        <mat-error *ngIf="profileForm?.controls?.gst?.hasError('required')">GST / Pan Card is <strong>required.</strong>
+        </mat-error>
+        <mat-error *ngIf="profileForm?.controls?.gst?.hasError('pattern')">Special Characters are <strong>not allowed.</strong>
+        </mat-error>
+        <mat-error *ngIf="profileForm?.controls?.gst?.hasError('serverError')">
+          {{profileForm.get('gst').getError('serverError')}}
+        </mat-error>
       </mat-form-field>
 
-      <button mat-raised-button class="w-100 mt-2" color="seagreen">
-        <i class="fa fa-paper-plane mr-2"></i>Send</button>
+      <button mat-raised-button class="w-100 mt-2" color="seagreen" (click)="saveProfile()" [disabled]="profileForm.pristine || profileForm.invalid">Save</button>
     </div>
   </div>
 </form>

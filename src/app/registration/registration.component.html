@@ -34,6 +34,9 @@
               *ngIf="signupFormGroup?.controls?.mobile?.hasError('minlength') || signupFormGroup?.controls?.mobile?.hasError('maxlength')">
               Please enter 10 digits.</mat-error>
             <mat-error *ngIf="signupFormGroup?.controls?.mobile?.hasError('pattern')">Wrong contact number.</mat-error>
+            <mat-error *ngIf="signupFormGroup?.controls?.mobile?.hasError('serverError')">
+              {{signupFormGroup.get('mobile').getError('serverError')}}
+            </mat-error>
           </mat-form-field>
   
           <mat-form-field appearance="outline">
@@ -44,6 +47,9 @@
               <strong>required.</strong></mat-error>
             <mat-error *ngIf="signupFormGroup?.controls?.fname?.hasError('pattern')">Please use
               <strong>characters.</strong></mat-error>
+            <mat-error *ngIf="signupFormGroup?.controls?.fname?.hasError('serverError')">
+              {{signupFormGroup.get('fname').getError('serverError')}}
+            </mat-error>
           </mat-form-field>
   
           <mat-form-field appearance="outline">
@@ -54,6 +60,9 @@
               <strong>required.</strong></mat-error>
             <mat-error *ngIf="signupFormGroup?.controls?.lname?.hasError('pattern')">Please use
               <strong>characters.</strong></mat-error>
+            <mat-error *ngIf="signupFormGroup?.controls?.lname?.hasError('serverError')">
+              {{signupFormGroup.get('lname').getError('serverError')}}
+            </mat-error>
           </mat-form-field>
   
           <mat-form-field appearance="outline">
@@ -85,7 +94,7 @@
         </mat-card-content>
         
         <mat-card-actions>
-          <button mat-raised-button color="darkslateblue" class="mx-2 my-1" (click)="register()">Sign Up</button>
+          <button mat-raised-button color="darkslateblue" class="mx-2 my-1" (click)="register()" [disabled]="signupFormGroup.pristine || signupFormGroup.invalid">Sign Up</button>
           <div class="mx-2">
             <mat-hint>Already a Seller? <a routerLink="/login" class="text-decoration-none">Login Here</a></mat-hint>
           </div>

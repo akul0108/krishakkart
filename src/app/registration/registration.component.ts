@@ -4,8 +4,6 @@ import { AuthService } from '../services/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import * as firebase from 'firebase';
-
 
 @Component({
   selector: 'app-registration',
@@ -22,14 +20,12 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.signupFormGroup = this._formBuilder.group({
-      // username: ['',[Validators.required, Validators.pattern('^[a-zA-Z]+[0-9]*$')]],
-      fname: ['',[Validators.required, Validators.pattern('[a-zA-Z ]+')]],
+      fname: ['',[Validators.required, Validators.pattern('[a-zA-Z]+')]],
       lname: ['',[Validators.required, Validators.pattern('[a-zA-z]+')]],
       email: ['',[Validators.required, Validators.email]],
       mobile: ['',[Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('[6-9][0-9]*')]],
       password: ['',[Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[0-9A-Za-z$@$!%*?&].{5,}')]],
       cpassword: ['', Validators.required],
-      // privacy : ['',[Validators.required]]
     });
   }
 
@@ -42,12 +38,36 @@ export class RegistrationComponent implements OnInit {
 
   register() {
     this.auth.register(this.signupFormGroup.value)
-      .then( userCredential => {
-          userCredential.user.updateProfile({
+      .then( async userCredential => {
+          await userCredential.user.updateProfile({
             displayName: this.signupFormGroup.get('fname').value + ' ' + this.signupFormGroup.get('lname').value
           });
-          this.auth.setToken();
-          this.router.navigateByUrl('/sellerDashboard');
+          this.auth.createSellerProfile(this.signupFormGroup.value, userCredential.user.uid).subscribe(
+            async (res) => {
+              if(!res)
+                console.log('user not created');
+              else {
+                await this.auth.setToken();
+                this.router.navigateByUrl('/sellerUpdateProfile');
+              }
+            },
+            err => {
+              const validationError = err.error.errors;
+              validationError.forEach(element => {
+                switch (element.param) {
+                  case "fname":
+                    this.signupFormGroup.controls['fname'].setErrors({'serverError': element.msg})
+                    break;
+                  case "lname":
+                    this.signupFormGroup.controls['lname'].setErrors({'serverError': element.msg})
+                    break;
+                  case "contact":
+                    this.signupFormGroup.controls['mobile'].setErrors({'serverError': element.msg})
+                    break;
+                }
+              });
+            }
+          );
         })
       .catch((error) => {
         // Handle Errors here.
@@ -55,16 +75,15 @@ export class RegistrationComponent implements OnInit {
         var errorMessage = error.message;
         if (errorCode == 'auth/weak-password') {
           this.snackbar.open('The password is too weak.', 'X', {
-            duration: 120000,
+            duration: 3000,
             verticalPosition: 'top'
           });
         } else {
           this.snackbar.open(errorMessage, 'X',{
-            duration: 120000,
+            duration: 3000,
             verticalPosition: 'top'
           });
         }
-        console.log(error);
       });
   }
 }

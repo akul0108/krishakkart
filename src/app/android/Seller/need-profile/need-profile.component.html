@@ -1,0 +1,11 @@
+<mat-toolbar color="seagreen">
+    Seller Profile
+  <span class="spacer"></span>
+  <button mat-button (click)="profileDialog()">
+    Hi, {{fname | titlecase}}
+    <mat-icon class="pl-2">account_circle</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="container">
+    <ng-container *ngComponentOutlet="allocComponent"></ng-container>
+</div>

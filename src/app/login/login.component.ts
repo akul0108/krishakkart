@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { SellerService } from '../services/seller.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit {
                private router: Router, 
                private snackbar: MatSnackBar, 
                private _formBuilder: FormBuilder, 
-               private ngZone: NgZone) { }
+               private ngZone: NgZone,
+               private sellerService: SellerService) { }
 
   ngOnInit() {
     this.custLoginFormGroup = this._formBuilder.group({
@@ -144,9 +146,17 @@ export class LoginComponent implements OnInit {
   signInRegular() {
     let email = this.sellerLoginFormGroup.get('username').value;
     let password = this.sellerLoginFormGroup.get('password').value;
-    this.auth.signInRegular(email, password).then((res) => {
-      this.auth.setToken();
-      this.router.navigate(['sellerDashboard']);
+    this.auth.signInRegular(email, password).then(async (res) => {
+      await this.auth.setToken();
+      this.sellerService.getProfile(firebase.auth().currentUser.uid).subscribe(
+        res => {
+          if(res['status'] == true)
+            this.router.navigate(['sellerDashboard']);
+          else
+            this.router.navigate(['sellerUpdateProfile']);
+        },
+        err => console.log(err)
+      );
     })
     .catch((error) => {
       this.snackbar.open(error.message, 'X',{

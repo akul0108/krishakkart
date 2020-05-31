@@ -19,7 +19,10 @@ export class AuthGuardGuard implements CanActivate {
       const google = route.data.google;
       const fb = route.data.facebook;
       const payload = this.auth.getUserPayload();
-      const role = payload.firebase.sign_in_provider;
+      let role = null;
+      if(payload != null) {
+        role = payload.firebase.sign_in_provider;
+      }
 
       if(!this.auth.isLoggedIn || !(role === password || role === phone || role === google || role === fb)) {
         this.auth.logout();
