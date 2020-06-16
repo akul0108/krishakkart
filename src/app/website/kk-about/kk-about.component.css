@@ -7,3 +7,18 @@
 .overflow {
     overflow-x: hidden;
 }
+h1{
+    font-family:'garamond';
+    font-size: 30px;
+    color: darkgreen;
+    font-style: inherit;
+}
+h3{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-size: 35px;
+}
+p{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: oblique;
+}
