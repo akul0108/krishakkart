@@ -3,3 +3,8 @@
     top: 80px;
     z-index: 1019;
 }
+h3{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-size: 35px;
+}
