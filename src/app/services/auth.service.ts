@@ -35,7 +35,7 @@ export class AuthService {
 
   currentUser: string;
 
-  uri = 'http://localhost:3000/seller';
+  uri = 'https://api.krishakkart.com/seller';
 
   // noAuthHeader = { headers: new HttpHeaders({ 'NoAuth': 'True'}) };
 

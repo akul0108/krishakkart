@@ -8,7 +8,7 @@ export class SellerService {
 
   constructor(private http: HttpClient) { }
 
-  uri = 'http://localhost:3000/seller';
+  uri = 'https://api.krishakkart.com/seller';
 
   profileUpdate(uid, profilePicURL, profileForm) {
     const profile = {
