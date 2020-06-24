@@ -30,6 +30,6 @@ export class PasswordResetComponent implements OnInit {
   pwdUpdate() {
     let currpwd = this.pwdResetFormGroup.get('currpassword').value;
     let newpwd = this.pwdResetFormGroup.get('password').value;
-    this.auth.pwdUpdate(currpwd, newpwd)
+    this.auth.pwdUpdate(currpwd, newpwd);
   }
 }

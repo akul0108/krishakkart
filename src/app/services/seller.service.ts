@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { timeout } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,8 @@ export class SellerService {
   }
 
   getProfile(uid) {
-    return this.http.get(`${this.uri}/createSeller/${uid}`);
+    return this.http.get(`${this.uri}/createSeller/${uid}`).pipe(
+      timeout(5000)
+);
   }
 }
