@@ -8,3 +8,15 @@ h3{
     font-style: italic;
     font-size: 35px;
 }
+.card-body {
+    padding: 50px;
+    background-color:white;
+    transition: transform .1s;
+    margin: 0 auto;
+  }
+  
+  .card-body:hover {
+    -ms-transform: scale(0.5); /* IE 9 */
+    -webkit-transform: scale(0.5); /* Safari 3-8 */
+    transform: scale(1.2); 
+  }
