@@ -39,8 +39,8 @@ export class KkContactUsComponent implements OnInit{
       title: 'Krishakkart',
       text: 'We will get back to you!!',
       type: 'success',
-      confirmButtonClass: 'btn btn-success'
-    });
+      confirmButtonColor: ''
+    })
   }
 
 
